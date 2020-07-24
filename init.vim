@@ -7,12 +7,6 @@ set relativenumber
 set mouse=a
 set showmatch
 
-" PHP syntax
-let php_parent_error_close = 1  
-let php_parent_error_open = 1
-let php_htmlInStrings = 1
-let php_sql_query = 1
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
