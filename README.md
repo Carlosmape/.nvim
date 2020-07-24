@@ -19,5 +19,13 @@ TODO: place some screenshot here
  4. Enjoy :)!
      
 ### How do I use?   
+Leader key is space bar    
+Mapped commands:     
+| Custom command      | Does             |
+|---------------------|------------------|
+|`<space_bar>` + `w`  | Save file        |
+| `<space_bar>` + `q` | Quit current file|
+| `<space_bar>` + `nt`| Open NerdTree    |  
+| `<space_bar>` + `s` | Open EasyMotion  |
 
 
