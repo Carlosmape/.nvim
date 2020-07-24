@@ -21,6 +21,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 
+" This plugin adds the ability to automatically lint code while you edit in Vim
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
 colorscheme gruvbox
