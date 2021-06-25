@@ -20,13 +20,29 @@ TODO: place some screenshot here
  4. Enjoy :)!
      
 ### How do I use?   
-Leader key is space bar    
+Leader key is space bar (` `)    
+     
 Mapped commands:     
 | Custom command      | Does             |
 |---------------------|------------------|
-|`<space_bar>` + `w`  | Save file        |
+| `<space_bar>` + `w` | Save file        |
 | `<space_bar>` + `q` | Quit current file|
 | `<space_bar>` + `nt`| Open NerdTree    |  
 | `<space_bar>` + `s` | Open EasyMotion  |
-
-
+     
+Vim inherit commands:
+| Moving Command               | Does                                   |
+|------------------------------|----------------------------------------|
+| `w`                          | To next word begin                     |
+| `b`                          | To prev. word begin                    |
+| `e`                          | To word end                            |  
+| `G`                          | To last file line                      |
+| `g` + `[moving command | g]` | To `moving command` or file first line |
+       
+| Control commands              | Does                                                     |
+|-------------------------------|----------------------------------------------------------|
+| `ESC`                         | Enters in command mode                                   |
+| `i`                           | Enters in insert mode                                    |
+| `v`                           | Enters in visual mode (to select)                        |
+| `d` + `[moving command | d ]` | Deletes from cursor to `moving command` or complete line |   
+   
