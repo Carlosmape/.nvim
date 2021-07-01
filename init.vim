@@ -12,14 +12,37 @@ call plug#begin('~/.vim/plugged')
 " Theme plugin
 Plug 'morhetz/gruvbox'
 
-" Features
+" Vitamined search and navigation by match results
 Plug 'easymotion/vim-easymotion'
+
+" Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
+let NERDTreeQuitOnOpen=1
+
+" Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
+
+" Automatically closes brackets, quotes and so on
 Plug 'jiangmiao/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+set noshowmode
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'gitbranch#name'
+	\ },
+	\ }
+" Child plugin to show CVS Git status
+Plug 'itchyny/vim-gitbranch'
 
 call plug#end()
 
@@ -29,7 +52,6 @@ colorscheme gruvbox
 let mapleader=" "
 nmap <Leader>s <Plug>(easymotion-s2)
 
-let NERDTreeQuitOnOpen=1
 nmap <Leader>nt :NERDTreeFind<CR>
 
 nmap <Leader>w :w<CR>
