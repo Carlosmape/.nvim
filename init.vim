@@ -27,6 +27,9 @@ Plug 'jiangmiao/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
+Plug 'maxboisvert/vim-simple-complete'
+"set complete-=t
+"set complete-=i
 
 " Status line
 Plug 'itchyny/lightline.vim'
