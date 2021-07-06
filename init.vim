@@ -19,7 +19,6 @@ call plug#begin('~/.vim/plugged')
 "
 " Theme plugin
 Plug 'morhetz/gruvbox'
-colorscheme gruvbox
 
 " Vitamined search and navigation by match results
 Plug 'easymotion/vim-easymotion'
@@ -80,6 +79,7 @@ Plug 'itchyny/vim-gitbranch'
 call plug#end()
 
 
+colorscheme gruvbox
 
 
 
