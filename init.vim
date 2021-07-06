@@ -81,5 +81,17 @@ call plug#end()
 
 colorscheme gruvbox
 
+set updatetime=500
+function! HighlightWordUnderCursor()
+    let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
+    if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
+        return
+    endif
+    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+        exec 'match' 'Search' '/\V\<'.expand('<cword>').'\>/'
+    else
+        match none
+    endif
+endfunction
 
-
+autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
