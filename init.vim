@@ -17,6 +17,7 @@ Plug 'easymotion/vim-easymotion'
 
 " Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
 
 " Allows to open splitted documents
@@ -39,8 +40,8 @@ Plug 'ackyshake/VimCompletesMe'
 "endfunction
 " use TAB to autocomplete
 "inoremap <silent><expr> <Tab>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<Tab>" :
+"      \ pumvisible() ? '\<C-n>':
+"      \ <SID>check_back_space() ? '\<Tab>' :
 "      \ coc#refresh()
 " use <c-space>for trigger completion
 "inoremap <silent><expr> <c-space> coc#refresh()
