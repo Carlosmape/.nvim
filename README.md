@@ -2,12 +2,19 @@
 It also should work for Vim    
     
 ### What it does?
-Configuration file has my own vim customization. It contains some rules, a plugin manager and also some plugins ready to be installed.
+Configuration file has my own nvim customization. It contains some rules, a plugin manager and also some plugins ready to be installed.
    
 ##### Some added plugins
- - Vim-Plug (plugin manager [See more](https://github.com/junegunn/vim-plug))  
- - NerdTree (Allows to see directory tree)   
- - And so on    
+ - Vim-Plug (Plugin manager [See more](https://github.com/junegunn/vim-plug))  
+ - NerdTree (Allows to see directory tree [See more](https://github.com/scrooloose/nerdtree-git-plugin))   
+ - EasyMotion (Search and navigate using keyboard [See more](https://github.com/easymotion/vim-easymotion))
+ - VimCompletesMe (Autocompletion plugin [See more](https://github.com/ackyshake/VimCompletesMe))
+ - GruvBox (Colorscheme and themming plugin [See more](https://github.com/morhetz/gruvbox))
+ - TMuxNavigator (Splitted window navigation plugin (just using common movement keys + <CTRL>) [See more](https://github.com/christoomey/vim-tmux-navigator))
+ - LightLine (Statusline plugin [See more](https://github.com/itchyny/lightline.vim))
+   - GitBranch (Git current branch for LightLine [See more](https://github.com/itchyny/vim-gitbranch))
+ - ALE (Under testing. Not totally working [See more](https://github.com/dense-analysis/ale))
+ - <Under construction... It will be more!>    
 
 ### How it looks?
 TODO: place some screenshot here    
@@ -28,7 +35,7 @@ Mapped commands:
 | `<space_bar>` + `w` | Save file        |
 | `<space_bar>` + `q` | Quit current file|
 | `<space_bar>` + `nt`| Open NerdTree    |  
-| `<space_bar>` + `s` | Open EasyMotion  |
+| `<space_bar>` + `s` | Open EasyMotion (using at least 2 chars)  |
      
 Vim inherit commands:
 | Moving Command               | Does                                   |
