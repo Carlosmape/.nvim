@@ -28,9 +28,22 @@ Plug 'jiangmiao/auto-pairs'
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
 " Poor autocompletion plugin, but works!
-" Plug 'maxboisvert/vim-simple-complete'
+"Plug 'maxboisvert/vim-simple-complete'
 " Finest autocompletion plugin. Testing
 Plug 'ackyshake/VimCompletesMe'
+" Even better simple and low dependency (Just NodeJS) autocompletion plugin
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction
+" use TAB to autocomplete
+"inoremap <silent><expr> <Tab>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<Tab>" :
+"      \ coc#refresh()
+" use <c-space>for trigger completion
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 " Status line
 Plug 'itchyny/lightline.vim'
@@ -45,6 +58,7 @@ let g:lightline = {
 	\   'gitbranch': 'gitbranch#name'
 	\ },
 	\ }
+
 " Child plugin to show CVS Git status
 Plug 'itchyny/vim-gitbranch'
 
