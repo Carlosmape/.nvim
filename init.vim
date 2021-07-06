@@ -7,18 +7,29 @@ set relativenumber
 set mouse=a
 set showmatch
 
-call plug#begin('~/.vim/plugged')
+set tabstop=4
+set shiftwidth=4
 
+" Keyboard commands binding
+let mapleader=" "
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>	
+
+call plug#begin('~/.vim/plugged')
+"
 " Theme plugin
 Plug 'morhetz/gruvbox'
+colorscheme gruvbox
 
 " Vitamined search and navigation by match results
 Plug 'easymotion/vim-easymotion'
+nmap <Leader>s <Plug>(easymotion-s2)
 
 " Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeQuitOnOpen=1
+nmap <Leader>nt :NERDTreeFind<CR>
 
 " Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
@@ -46,6 +57,9 @@ Plug 'ackyshake/VimCompletesMe'
 " use <c-space>for trigger completion
 "inoremap <silent><expr> <c-space> coc#refresh()
 
+" Integrated Compilation plugin
+Plug 'tpope/vim-dispatch'
+
 " Status line
 Plug 'itchyny/lightline.vim'
 set noshowmode
@@ -65,13 +79,7 @@ Plug 'itchyny/vim-gitbranch'
 
 call plug#end()
 
-colorscheme gruvbox
 
-" Keyboard commands binding
-let mapleader=" "
-nmap <Leader>s <Plug>(easymotion-s2)
 
-nmap <Leader>nt :NERDTreeFind<CR>
 
-nmap <Leader>w :w<CR>
-nmap <Leader>q :q<CR>
+
