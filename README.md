@@ -14,6 +14,7 @@ Configuration file has my own nvim customization. It contains some rules, a plug
  - LightLine (Statusline plugin [See more](https://github.com/itchyny/lightline.vim))
    - GitBranch (Git current branch for LightLine [See more](https://github.com/itchyny/vim-gitbranch))
  - ALE (Under testing. Not totally working [See more](https://github.com/dense-analysis/ale))
+ - CtrlP (Fuzzy File, Buffer and Tag Finder [See more](https://github.com/ctrlpvim/ctrlp.vim))
  - <Under construction... It will be more!>    
 
 ### How it looks?
@@ -36,6 +37,7 @@ Mapped commands:
 | `<space_bar>` + `q` | Quit current file|
 | `<space_bar>` + `nt`| Open NerdTree    |  
 | `<space_bar>` + `s` | Open EasyMotion (using at least 2 chars)  |
+| `<Ctrl>` + `p`      | Search files in PWD by name |
      
 Vim inherit commands:
 | Moving Command               | Does                                   |

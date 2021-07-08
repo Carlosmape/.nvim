@@ -76,6 +76,8 @@ let g:lightline = {
 " Child plugin to show CVS Git status
 Plug 'itchyny/vim-gitbranch'
 
+"Plugin to search in PWD <Ctrl>+<p>
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 
