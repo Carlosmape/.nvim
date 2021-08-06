@@ -54,4 +54,4 @@ Vim inherit commands:
 | `i`                           | Enters in insert mode                                    |
 | `v`                           | Enters in visual mode (to select)                        |
 | `d` + `[moving command | d ]` | Deletes from cursor to `moving command` or complete line |   
-   
+| `*`                           | Searchs current cursor word, nevigate using n|N or *|#   |   
