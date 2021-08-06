@@ -14,6 +14,7 @@ set shiftwidth=4
 let mapleader=" "
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>	
+nmap <Leader>cs :set spell!<CR>
 
 call plug#begin('~/.vim/plugged')
 "
