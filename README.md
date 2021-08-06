@@ -36,7 +36,9 @@ Mapped commands:
 | `<space_bar>` + `w` | Save file        |
 | `<space_bar>` + `q` | Quit current file|
 | `<space_bar>` + `nt`| Open NerdTree    |  
-| `<space_bar>` + `s` | Open EasyMotion (using at least 2 chars)  |
+| `<space_bar>` + `s` | Open EasyMotion  |
+| `<space_bar>` + `sw`| Open EasyMotion navigate in following words |
+| `<space_bar>` + `cs`| Enables spell check [See more](https://neovim.io/doc/user/spell.html) |
 | `<Ctrl>` + `p`      | Search files in PWD by name |
 | `<Tab>`             | At the end of current writting word, autocompletes hint |
 
@@ -51,10 +53,10 @@ Vim inherit commands:
        
 | Control commands              | Does                                                     |
 |-------------------------------|----------------------------------------------------------|
-| `<Esc>`                         | Enters in command mode                                   |
+| `<Esc>`                         | Enters in command mode                                 |
 | `i`                           | Enters in insert mode                                    |
 | `v`                           | Enters in visual mode (to select)                        |
 | `d` + `[moving command | d ]` | Deletes from cursor to `moving command` or complete line |   
-| `*`                           | Searchs current cursor word, nevigate using n|N or *|#   |   
+| `*`                           | Searchs and hihglight current cursor word in entire file, nevigate using `n|N` or `*|#`   |   
 
 
