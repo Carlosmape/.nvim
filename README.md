@@ -38,7 +38,8 @@ Mapped commands:
 | `<space_bar>` + `nt`| Open NerdTree    |  
 | `<space_bar>` + `s` | Open EasyMotion (using at least 2 chars)  |
 | `<Ctrl>` + `p`      | Search files in PWD by name |
-     
+| `<Tab>`             | At the end of current writting word, autocompletes hint |
+
 Vim inherit commands:
 | Moving Command               | Does                                   |
 |------------------------------|----------------------------------------|
@@ -50,8 +51,10 @@ Vim inherit commands:
        
 | Control commands              | Does                                                     |
 |-------------------------------|----------------------------------------------------------|
-| `ESC`                         | Enters in command mode                                   |
+| `<Esc>`                         | Enters in command mode                                   |
 | `i`                           | Enters in insert mode                                    |
 | `v`                           | Enters in visual mode (to select)                        |
 | `d` + `[moving command | d ]` | Deletes from cursor to `moving command` or complete line |   
 | `*`                           | Searchs current cursor word, nevigate using n|N or *|#   |   
+
+
