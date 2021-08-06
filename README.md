@@ -33,12 +33,12 @@ Leader key is space bar (` `)
 Mapped commands:     
 | Custom command      | Does             |
 |---------------------|------------------|
-| `<space_bar>` + `w` | Save file        |
-| `<space_bar>` + `q` | Quit current file|
-| `<space_bar>` + `nt`| Open NerdTree    |  
-| `<space_bar>` + `s` | Open EasyMotion  |
-| `<space_bar>` + `sw`| Open EasyMotion navigate in following words |
-| `<space_bar>` + `cs`| Enables spell check [See more](https://neovim.io/doc/user/spell.html) |
+| `<Leader>` + `w` | Save file        |
+| `<Leader>` + `q` | Quit current file|
+| `<Leader>` + `nt`| Open NerdTree    |  
+| `<Leader>` + `s` | Open EasyMotion  |
+| `<Leader>` + `sw`| Open EasyMotion navigate in following words |
+| `<Leader>` + `cs`| Enables spell check [See more](https://neovim.io/doc/user/spell.html) |
 | `<Ctrl>` + `p`      | Search files in PWD by name |
 | `<Tab>`             | At the end of current writting word, autocompletes hint |
 
