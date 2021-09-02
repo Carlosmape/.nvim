@@ -29,8 +29,12 @@ nmap <Leader>sw <Plug>(easymotion-w)
 " Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
 let NERDTreeQuitOnOpen=1
-nmap <Leader>nt :NERDTreeFind<CR>
+" NERDTree shortcut
+nmap <Leader>nt :NERDTreeVCS<CR>
 
 " Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
