@@ -15,7 +15,7 @@ let mapleader=" "
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>	
 nmap <Leader>cs :set spell!<CR>
-
+nmap <Leader>sr :%s
 call plug#begin('~/.vim/plugged')
 "
 " Theme plugin
@@ -32,7 +32,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=0
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
 nmap <Leader>nt :NERDTreeVCS<CR>
 
