@@ -39,6 +39,7 @@ Mapped commands:
 | `<Leader>` + `s` | Open EasyMotion  |
 | `<Leader>` + `sw`| Open EasyMotion navigate in following words |
 | `<Leader>` + `cs`| Enables spell check [See more](https://neovim.io/doc/user/spell.html) |
+| `<Leader>` + `sr`| Enters global search and replace cmd (':%s') |
 | `<Ctrl>` + `p`      | Search files in PWD by name |
 | `<Tab>`             | At the end of current writting word, autocompletes hint |
 
