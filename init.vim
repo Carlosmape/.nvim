@@ -28,6 +28,7 @@ nmap <Leader>sw <Plug>(easymotion-w)
 
 " Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
+" Shows git file states in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
@@ -49,6 +50,7 @@ Plug 'dense-analysis/ale'
 "Plug 'maxboisvert/vim-simple-complete'
 " Finest autocompletion plugin. Testing
 Plug 'ackyshake/VimCompletesMe'
+autocmd FileType vim let b:vcm_tab_complete = 'vim'
 " Even better simple and low dependency (Just NodeJS) autocompletion plugin
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "function! s:check_back_space() abort
@@ -70,7 +72,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {
-	\ 'colorscheme': 'wombat',
+	\ 'colorscheme': 'gruvbox',
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ],
 	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -87,5 +89,23 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
+"Auto current word highlighter
+set updatetime=10
+function! HighlightWordUnderCursor()
+    let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
+    if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
+        return
+    endif
+    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+        hi MatchWord cterm=undercurl gui=undercurl guibg=#3b404a
+        exec 'match' 'MatchWord' '/\V\<'.expand('<cword>').'\>/'
+    else
+        match none
+    endif
+endfunction
+augroup MatchWord
+  autocmd!
+  autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+augroup END
 
 colorscheme gruvbox
