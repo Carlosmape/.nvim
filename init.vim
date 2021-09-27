@@ -12,10 +12,15 @@ set shiftwidth=4
 
 " Keyboard commands binding
 let mapleader=" "
+" Map to save
 nmap <Leader>w :w<CR>
+" Map to close current
 nmap <Leader>q :q<CR>	
+" Map to check spell
 nmap <Leader>cs :set spell!<CR>
-nmap <Leader>sr :%s
+" Map to run find-replace with the last find expression (push <CTRL>+* and then
+" <space>+sr to replace current word)
+nmap <Leader>sr :%s//
 call plug#begin('~/.vim/plugged')
 "
 " Theme plugin
