@@ -46,6 +46,9 @@ Plug 'jiangmiao/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
+" Able ALE by default (it will launches check errors when in normal mode)
+g:ale_enabled 1
+
 " Poor autocompletion plugin, but works!
 "Plug 'maxboisvert/vim-simple-complete'
 " Finest autocompletion plugin. Testing
