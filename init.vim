@@ -10,7 +10,7 @@ set showmatch
 set tabstop=4
 set shiftwidth=4
 
-" Keyboard commands binding
+" Keyboard commands binding asdasd badword
 let mapleader=" "
 " Map to save
 nmap <Leader>w :w<CR>
@@ -18,6 +18,8 @@ nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>	
 " Map to check spell
 nmap <Leader>cs :set spell!<CR>
+" Able check spell by default
+:set spell 
 " Map to run find-replace with the last find expression (push <CTRL>+* and then
 " <space>+sr to replace current word)
 nmap <Leader>sr :%s//
