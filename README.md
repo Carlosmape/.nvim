@@ -67,6 +67,6 @@ Vim inherit commands [See more](https://neovim.io/doc/user/motion.html):
 | `x`                           | In visual mode, cuts selected piece of code |  
 | `p`                           | Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content) |  
 | `P`                           | Pastes clipboard content before current cursor position (if in visual mode, behaves as previous command) |  
-| `*`                           | Searches (like `/` cmd) current cursor word in entire fil `n|N` or `*|#` |   
+| `*`                           | Searches (like `/` cmd) current cursor word in entire file `n\|N` or `*\|#` |   
 
 
