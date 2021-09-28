@@ -59,19 +59,8 @@ g:ale_enabled 1
 " Finest autocompletion plugin. Testing
 Plug 'ackyshake/VimCompletesMe'
 autocmd FileType vim let b:vcm_tab_complete = 'vim'
-" Even better simple and low dependency (Just NodeJS) autocompletion plugin
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
-" use TAB to autocomplete
-"inoremap <silent><expr> <Tab>
-"      \ pumvisible() ? '\<C-n>':
-"      \ <SID>check_back_space() ? '\<Tab>' :
-"      \ coc#refresh()
-" use <c-space>for trigger completion
-"inoremap <silent><expr> <c-space> coc#refresh()
+" Complementary plugin to generate tagfiles (method recognition and so on)
+"Plug 'ludovicchabant/vim-gutentags'
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
