@@ -54,10 +54,7 @@ Vim inherit commands [See more](https://neovim.io/doc/user/motion.html):
 | `^`                          | To current line starting (non-blank) char |
 | `$`                          | To current line end                    |
 | `%`                          | In a bracket, parenthesis or similar, goes to its pair |
-| `g` + `[moving cmd \| g]` | To `moving cmd` or file first line (samples: 
-								 - `g0` goes to char '0' in the current line) 
-								 - `g_` goes to last non-blank charachter of the line
-								 - `gm` goes to the middle of the screen |
+| `g` + `[moving cmd \| g]` | To `moving cmd` or file first line (samples: `g0` goes to char '0' in the current line) `g_` goes to last non-blank charachter of the line `gm` goes to the middle of the screen |
        
 | Control commands              | Does                                                     |  
 |-------------------------------|----------------------------------------------------------|  
