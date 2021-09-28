@@ -80,15 +80,28 @@ Plug 'tpope/vim-dispatch'
 Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {
-	\ 'colorscheme': 'gruvbox',
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-	\ },
-	\ 'component_function': {
-	\   'gitbranch': 'gitbranch#name'
-	\ },
-	\ }
+			\ 'colorscheme': 'gruvbox',
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ],
+			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+			\ },
+			\ 'component_function': {
+			\   'gitbranch': 'gitbranch#name'
+			\ },
+			\ 'mode_map': {
+			\ 	'n' : 'N',
+			\ 	'i' : 'I',
+			\ 	'R' : 'R',
+			\ 	'v' : 'V',
+			\ 	'V' : 'VL',
+			\ 	"\<C-v>": 'VB',
+			\ 	'c' : 'C',
+			\ 	's' : 'S',
+			\ 	'S' : 'SL',
+			\ 	"\<C-s>": 'SB',
+			\ 	't': 'T',
+			\ },
+			\ }
 
 " Child plugin to show CVS Git status
 Plug 'itchyny/vim-gitbranch'
@@ -100,20 +113,20 @@ call plug#end()
 "Auto current word highlighter
 set updatetime=10
 function! HighlightWordUnderCursor()
-    let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
-    if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
-        return
-    endif
-    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
-        hi MatchWord cterm=undercurl gui=undercurl guibg=#3b404a
-        exec 'match' 'MatchWord' '/\V\<'.expand('<cword>').'\>/'
-    else
-        match none
-    endif
+	let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
+	if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
+		return
+	endif
+	if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+		hi MatchWord cterm=undercurl gui=undercurl guibg=#3b404a
+		exec 'match' 'MatchWord' '/\V\<'.expand('<cword>').'\>/'
+	else
+		match none
+	endif
 endfunction
 augroup MatchWord
-  autocmd!
-  autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+	autocmd!
+	autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 augroup END
 
 colorscheme gruvbox
