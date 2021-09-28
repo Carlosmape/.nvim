@@ -62,7 +62,7 @@ Vim inherit commands [See more](https://neovim.io/doc/user/motion.html):
 | `i`                           | Enters in insert mode (at current cursor position)       |  
 | `a`                           | Enters in insert mode (append, just after current cursor position) |  
 | `v`                           | Enters in visual mode (to select a piece of code)        |  
-| `d` + `[moving cmd | d ]`     | Deletes (cuts) from cursor to `moving cmd` or complete line (if in visual mode, deletes currently selected word) |   
+| `d` + `[moving cmd \| d ]`     | Deletes (cuts) from cursor to `moving cmd` or complete line (if in visual mode, deletes currently selected word) |   
 | `y`                           | In visual mode, yanks (copies) selected piece of code |  
 | `x`                           | In visual mode, cuts selected piece of code |  
 | `p`                           | Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content) |  
