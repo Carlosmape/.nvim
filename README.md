@@ -44,17 +44,20 @@ Mapped commands:
 | `<Ctrl>` + `p`   | Search files in PWD by name |
 | `<Tab>`          | At the end of current writting word, autocompletes hint |
 
-Vim inherit commands:
+Vim inherit commands [See more](https://neovim.io/doc/user/motion.html):
 | Moving Command (Normal mode) | Does                                   |
 |------------------------------|----------------------------------------|
 | `w`                          | To next word begin                     |
 | `b`                          | To prev. word begin                    |
 | `e`                          | To (current/next) word end             |  
 | `G`                          | To last file line                      |
-| `^`                          | To current line start                  |
+| `^`                          | To current line starting (non-blank) char |
 | `$`                          | To current line end                    |
 | `%`                          | In a bracket, parenthesis or similar, goes to its pair |
-| `g` + `[moving cmd | g]` | To `moving cmd` or file first line |
+| `g` + `[moving cmd \| g]` | To `moving cmd` or file first line (samples: 
+								 - `g0` goes to char '0' in the current line) 
+								 - `g_` goes to last non-blank charachter of the line
+								 - `gm` goes to the middle of the screen |
        
 | Control commands              | Does                                                     |  
 |-------------------------------|----------------------------------------------------------|  
