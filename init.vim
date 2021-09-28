@@ -48,8 +48,11 @@ nmap <Leader>nt :NERDTreeVCS<CR>
 " Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
 
-" Automatically closes brackets, quotes and so on
+" Automatically closes brackets, quotes and so on (too basic)
 Plug 'jiangmiao/auto-pairs'
+" The same but powerfull. Under testing
+"Plug 'windwp/nvim-autopairs'
+"require('nvim-autopairs').setup{}
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
