@@ -83,10 +83,11 @@ let g:lightline = {
 			\ 'colorscheme': 'gruvbox',
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
-			\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+			\             [ 'filename', 'gitbranch', 'modified' ] ]
 			\ },
 			\ 'component_function': {
-			\   'gitbranch': 'gitbranch#name'
+			\   'gitbranch': 'gitbranch#name',
+			\   'filename': 'LightLineCustomFilePath'
 			\ },
 			\ 'mode_map': {
 			\ 	'n' : 'N',
@@ -102,6 +103,10 @@ let g:lightline = {
 			\ 	't': 'T',
 			\ },
 			\ }
+" Custom function to show current file with parent dir in lightline 
+function! LightLineCustomFilePath()
+	return expand('%') !=# '' ? expand('%:p:h:t').'/'.expand('%') : '[New file]'
+endfunction
 
 " Child plugin to show CVS Git status
 Plug 'itchyny/vim-gitbranch'
