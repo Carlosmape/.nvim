@@ -64,6 +64,7 @@ Almost all motion commands allows you to insert a number before the command. For
 | `a`                           | Enters in insert mode (append, just after current cursor position) |  
 | `v`                           | Enters in visual mode (to select a piece of code)        |  
 | `d` + `[moving cmd \| d ]`     | Deletes (cuts) from cursor to `moving cmd` or complete line (if in visual mode, deletes currently selected word) |   
+| `.` 							| In normal mode, repeats last inserted text until `<CR>` |   
 | `y`                           | In visual mode, yanks (copies) selected piece of code |  
 | `x`                           | In visual mode, cuts selected piece of code |  
 | `p`                           | Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content) |  
