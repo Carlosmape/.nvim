@@ -45,9 +45,9 @@ Mapped commands:
 | `<Ctrl>` + `p`   | Search files in PWD by name |
 | `<Tab>`          | At the end of current writting word, autocompletes hint |
 
-Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)
-Almost all motion commands allows you to insert a number before the command. For example in Normal Mode, writes `5w` will move 5 words fordward:
-| Moving Command (Normal mode or pushing `<Alt>` in Insert mode) | Does                                   |
+Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)(Motion commands should be used in Normal mode or pushing `<Alt>`+`<motion cmd>` in another mode)
+Almost all motion commands allows you to insert a number before the command. For example write `5w` will move 5 words fordward:
+| Moving Command  | Does                                   |
 |------------------------------|----------------------------------------|
 | `w`                          | To next word begin                     |
 | `b`                          | To prev. word begin                    |
