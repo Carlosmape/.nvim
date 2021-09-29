@@ -41,6 +41,7 @@ Mapped commands:
 | `<Leader>` + `sw`| Open EasyMotion navigate in following words |
 | `<Leader>` + `cs`| Toggles spell check [See more](https://neovim.io/doc/user/spell.html) |
 | `<Leader>` + `sr`| Enters in 'search and replace' for the last searched word (`:%s//`+...) Must add text to replace and controller (...+`/gc` for global with confirmation) |
+| `<Alt>` + `e`    | Will wrap autopairs (converts `()text` into `(text)` may be used with any enclosing bytes (`()`,`""`,`{}`,...)) |  
 | `<Ctrl>` + `p`   | Search files in PWD by name |
 | `<Tab>`          | At the end of current writting word, autocompletes hint |
 
