@@ -47,7 +47,7 @@ Mapped commands:
 
 Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)
 Almost all motion commands allows you to insert a number before the command. For example in Normal Mode, writes `5w` will move 5 words fordward:
-| Moving Command (Normal mode) | Does                                   |
+| Moving Command (Normal mode or pushing `<Alt>` in Insert mode) | Does                                   |
 |------------------------------|----------------------------------------|
 | `w`                          | To next word begin                     |
 | `b`                          | To prev. word begin                    |
