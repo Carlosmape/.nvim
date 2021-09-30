@@ -49,10 +49,9 @@ nmap <Leader>nt :NERDTreeVCS<CR>
 Plug 'christoomey/vim-tmux-navigator'
 
 " Automatically closes brackets, quotes and so on (too basic)
-Plug 'jiangmiao/auto-pairs'
-" The same but powerfull. Under testing
-"Plug 'windwp/nvim-autopairs'
-"require('nvim-autopairs').setup{}
+" Plug 'jiangmiao/auto-pairs'
+" A powerfull optimized and features rich fork of jiangmiao's
+Plug 'lunarwatcher/auto-pairs' 
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
