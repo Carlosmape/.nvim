@@ -61,15 +61,17 @@ Almost all motion commands allows you to insert a number before the command. For
 | Control commands              | Does                                                     |  
 |-------------------------------|----------------------------------------------------------|  
 | `<Esc>`                       | Enters in command mode                                   |  
-| `i`                           | Enters in insert mode (at current cursor position)       |  
-| `a`                           | Enters in insert mode (append, just after current cursor position) |  
-| `v`                           | Enters in visual mode (to select a piece of code)        |  
-| `d` + `[moving cmd \| d ]`     | Deletes (cuts) from cursor to `moving cmd` or complete line (if in visual mode, deletes currently selected word) |   
+| `i`                           | Enters in insert mode (at current cursor position). **Note** Uppercase will insert at the line beginning |  
+| `a`                           | Enters in insert mode (append, just after current cursor position). **Note** Uppercase will append at the end of the line |  
+| `o`                           | Opens a new line under cursor position and enters in insert mode. **Note** Uppercase will act backwards (new line will be inserted above) |
+| `r` 						    | Replaces cursor text (if in visual mode). **Note** Uppercase will enter in replace mode (like insert but replacing all) |
+| `c` + `[moving cmd \| c ]`    | Changes current cursor until `moving cmd` (or complete line). Does a `d` until `moving cmd` + `insert`. **Note** Uppercase to change from cursor til line end |
+| `v`                           | Enters in visual mode (to select a piece of code). **Note** Uppercase will enter in VisualBlock mode |  
+| `d` + `[moving cmd \| d ]`    | Deletes (cuts) from cursor to `moving cmd` (or complete line). In visual mode, deletes currently selected piece of code. **Note** Uppercase is the same to do `dd` or `d$` |   
 | `.` 							| In normal mode, repeats last inserted text until `<CR>` |   
-| `y`                           | In visual mode, yanks (copies) selected piece of code |  
-| `x`                           | In visual mode, cuts selected piece of code |  
-| `p`                           | Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content) |  
-| `P`                           | Pastes clipboard content before current cursor position (if in visual mode, behaves as previous command) |  
-| `*`                           | Searches (like `/` cmd) current cursor word in entire file `n\|N` or `*\|#` |   
-
-
+| `y` + `[moving cmd \| y ]` 	| In normal mode, yanks (copies) til `moving cmd` (or complete line). In visual mode, yanks selected piece of code. **Note** Uppercase is the same to do `yy` or `d$` |  
+| `x`                        	| In visual mode, cuts selected piece of code. **Note** Uppercase will do it in backwards |  
+| `p`                        	| Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content). **Note** Uppercase will act backwards |  
+| `*\|#`                     	| Searches (like `/` cmd) current cursor word in entire file `n\|N` or `*\|#` |   
+| `q` + `{letter}` 				| To record a macro. All commands done after record starts can be executed using `@` + {letter}. **Note** Indicates number of repetitions before executing a macro will do the macro many times |
+| `m` + `{letter}` 				| Creates a Bookmark in the current line. Use `'{letter}` to move to a bookmark. **Note** Uppercase to define global bookmarks (Allows to move between files) |
