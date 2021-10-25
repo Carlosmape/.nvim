@@ -23,6 +23,10 @@ nmap <Leader>cs :set spell!<CR>
 " Map to run find-replace with the last find expression (push <CTRL>+* and then
 " <space>+sr to replace current word)
 nmap <Leader>sr :%s//
+" Default map to execute current script
+nmap <F5> :w !%<CR>
+
+
 call plug#begin('~/.vim/plugged')
 "
 " Theme plugin

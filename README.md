@@ -43,6 +43,7 @@ Mapped commands:
 | `<Leader>` + `sr`| Enters in 'search and replace' for the last searched word (`:%s//`+...) Must add text to replace and controller (...+`/gc` for global with confirmation) |
 | `<Alt>` + `e`    | Will wrap autopairs (converts `()text` into `(text)` may be used with any enclosing bytes (`()`,`""`,`{}`,...)) |  
 | `<Ctrl>` + `p`   | Search files in PWD by name |
+| `<F5>`		   | Saves and execute current source file (`:w !%`). Should work for scripts (bash scripting, python, perl and so on...) |
 | `<Tab>`          | At the end of current writting word, autocompletes hint |
 
 Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)(Motion commands should be used in Normal mode or pushing `<Alt>`+`<motion cmd>` in another mode)
