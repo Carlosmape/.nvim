@@ -18,6 +18,9 @@ nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>	
 " Map to check spell
 nmap <Leader>cs :set spell!<CR>
+" Map to open splitted terminal (disabling line number)
+nmap <Leader>t :15split +te<CR>
+autocmd TermOpen * setlocal nonumber norelativenumber
 " Able check spell by default
 :set spell 
 " Map to run find-replace with the last find expression (push <CTRL>+* and then
