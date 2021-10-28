@@ -19,8 +19,8 @@ Configuration file has my own nvim customization. It contains some rules, a plug
  - <Under construction... It will be more!>    
 
 ### How it looks?
-TODO: place some screenshot here    
-      
+![image](https://user-images.githubusercontent.com/5487555/139299081-a65cdc0b-261c-4412-a04a-cec806bc45e9.png)
+    
 ### How do I install(?) or whatever
  1. This file should be placed on ~/.config/[nvim|vim]/init.vim   
  2. Install vim-plug plugin manager. [Know how](https://github.com/junegunn/vim-plug)   
