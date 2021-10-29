@@ -19,7 +19,7 @@ nmap <Leader>q :q<CR>
 " Map to check spell
 nmap <Leader>cs :set spell!<CR>
 " Map to open splitted terminal (disabling line number)
-nmap <Leader>t :15split +te<CR>
+nmap <Leader>t :5split +te<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber
 " Able check spell by default
 :set spell 
@@ -62,6 +62,13 @@ Plug 'lunarwatcher/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
+" FIXME: Use above line just in Windows Pylint.bat is defined as: 
+" python-m pylint %* --> To run pylint throw python interpreter not executable
+if has("win32")
+	let lint_path = fnamemodify($MYVIMRC, ":h") . "/windowsLinters/"
+	let g:ale_python_pylint_executable = lint_path . 'pylint.bat'
+	let g:ale_cpp_cpplint_executable = lint_path . 'cpplint.bat'
+endif
 " Able ALE by default (it will launches check errors when in normal mode)
 "g:ale_enabled 1
 
