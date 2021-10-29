@@ -26,7 +26,16 @@ Configuration file has my own nvim customization. It contains some rules, a plug
  2. Install vim-plug plugin manager. [Know how](https://github.com/junegunn/vim-plug)   
  3. Once there, you should open nvim and install plugins as says vim-plug repo:   
     On command mode type `:PlugInstall`
- 4. Enjoy :)!
+ 4. ALE needs some code linters (see next section to know more about this)
+ 5. Enjoy :)!    
+    
+ #### Configure ALE to make a powerfull IDE
+  1. ALE uses Linters (are Python code processors to inspect opened files looking for coding-standard, code errors and so on)
+  2. Install Python 3 in your system
+  3. Install each language linter python package throw pip (`pip install pylint`)
+  4. Check :ALEInfo command inside Vim to see what happens (linters and another executables checkins are at the end of the output)
+  5. In windows, there are some .bat allowing to use that linters (see `windowsLinters` folder). That .bat files just invokes linters throw python, not directly as commands
+
      
 ### How do I use?   
 Leader key is space bar (` `) This key is used to run custom mapping in Normal mode      
