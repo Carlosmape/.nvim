@@ -23,13 +23,19 @@ nmap <Leader>t :5split +te<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber
 " Able check spell by default
 :set spell 
-" Map to run find-replace with the last find expression (push <CTRL>+* and then
-" <space>+sr to replace current word)
+" ALE mapping keys:
+" Rename (locally)
 nmap <Leader>r :ALERename<CR>
+nmap <Leader>d :ALEGoToDefinition<CR>
+nmap <Leader>D :ALEGoToTypeDefinition<CR>
+nmap <Leader>n :ALENextWrap<CR>
 " Default map to execute current script
-nmap <F5> :w !%<CR>
-
-
+nmap <F5> :Start ./%<CR>
+" Execute in bg
+nmap <s-F5> :Start! ./%<CR>
+" Dispatch/Make 
+nmap <Leader><F5> :Dispatch<CR>
+nmap <Leader><c-F5> :Dispatch %
 call plug#begin('~/.vim/plugged')
 
 " Theme plugin
@@ -47,8 +53,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
-"let NERDTreeQuitOnOpen=0
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Close NT after open a file
+let NERDTreeQuitOnOpen=0
+" Close NT if it is the last tab opened (avoid to :q once if NT is opened)
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
 nmap <Leader>nt :NERDTreeVCS<CR>
 
@@ -78,19 +86,24 @@ let g:ale_sign_warning = '!'
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
+autocmd FileType java let b:dispatch = 'javac %'
+autocmd FileType python let b:dispatch ='pylint %'
 
 " Status line
 Plug 'itchyny/lightline.vim'
+" Disables command mode in above cmd line
 set noshowmode
+" Configuraion of lightline status bar
 let g:lightline = {
-			\ 'colorscheme': 'gruvbox',
+			\ 'colorscheme': 'wombat',
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
-			\             [ 'filename', 'gitbranch', 'modified' ] ]
+			\             [ 'filename', 'gitbranch', 'modified', 'linter' ] ]
 			\ },
 			\ 'component_function': {
 			\   'gitbranch': 'gitbranch#name',
-			\   'filename': 'LightLineCustomFilePath'
+			\   'filename': 'LightLineCustomFilePath',
+			\	'linter': 'LinterStatus'
 			\ },
 			\ 'mode_map': {
 			\ 	'n' : 'N',
@@ -109,6 +122,19 @@ let g:lightline = {
 " Custom function to show current file with parent dir in lightline 
 function! LightLineCustomFilePath()
 	return expand('%') !=# '' ? expand('%:p:h:t').'/'.expand('%') : '[New file]'
+endfunction
+" Function to show ALE Linter errors
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%d! %dX',
+    \   all_non_errors,
+    \   all_errors
+    \)
 endfunction
 
 " Child plugin to show CVS Git status
