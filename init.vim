@@ -25,13 +25,13 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 :set spell 
 " Map to run find-replace with the last find expression (push <CTRL>+* and then
 " <space>+sr to replace current word)
-nmap <Leader>sr :%s//
+nmap <Leader>r :ALERename<CR>
 " Default map to execute current script
 nmap <F5> :w !%<CR>
 
 
 call plug#begin('~/.vim/plugged')
-"
+
 " Theme plugin
 Plug 'morhetz/gruvbox'
 
@@ -45,10 +45,10 @@ Plug 'scrooloose/nerdtree'
 " Shows git file states in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
-let NERDTreeQuitOnOpen=0
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
+"let NERDTreeQuitOnOpen=0
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
 nmap <Leader>nt :NERDTreeVCS<CR>
 
@@ -71,6 +71,10 @@ endif
 "let g:ale_enabled 1
 let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_autoimport = 1
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
