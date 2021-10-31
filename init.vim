@@ -62,23 +62,15 @@ Plug 'lunarwatcher/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
-" FIXME: Use above line just in Windows Pylint.bat is defined as: 
-" python-m pylint %* --> To run pylint throw python interpreter not executable
+" Windows scripts to run python linters
 if has("win32")
 	let lint_path = fnamemodify($MYVIMRC, ":h") . "/windowsLinters/"
 	let g:ale_python_pylint_executable = lint_path . 'pylint.bat'
 	let g:ale_cpp_cpplint_executable = lint_path . 'cpplint.bat'
 endif
-" Able ALE by default (it will launches check errors when in normal mode)
-"g:ale_enabled 1
-
-" Poor autocompletion plugin, but works!
-"Plug 'maxboisvert/vim-simple-complete'
-" Finest autocompletion plugin. Testing
-Plug 'ackyshake/VimCompletesMe'
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
-" Complementary plugin to generate tagfiles (method recognition and so on)
-"Plug 'ludovicchabant/vim-gutentags'
+"let g:ale_enabled 1
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
@@ -121,24 +113,5 @@ Plug 'itchyny/vim-gitbranch'
 "Plugin to search in PWD <Ctrl>+<p>
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
-
-"Auto current word highlighter
-set updatetime=10
-function! HighlightWordUnderCursor()
-	let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
-	if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
-		return
-	endif
-	if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
-		hi MatchWord cterm=undercurl gui=undercurl guibg=#3b404a
-		exec 'match' 'MatchWord' '/\V\<'.expand('<cword>').'\>/'
-	else
-		match none
-	endif
-endfunction
-augroup MatchWord
-	autocmd!
-	autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
-augroup END
 
 colorscheme gruvbox
