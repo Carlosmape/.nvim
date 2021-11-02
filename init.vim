@@ -9,6 +9,8 @@ set showmatch
 
 set tabstop=4
 set shiftwidth=4
+" Able check spell by default
+:set spell 
 
 " Keyboard commands binding asdasd badword
 let mapleader=" "
@@ -18,11 +20,6 @@ nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>	
 " Map to check spell
 nmap <Leader>cs :set spell!<CR>
-" Map to open splitted terminal (disabling line number)
-nmap <Leader>t :5split +te<CR>
-autocmd TermOpen * setlocal nonumber norelativenumber
-" Able check spell by default
-:set spell 
 " ALE mapping keys:
 " Rename (locally)
 nmap <Leader>r :ALERename<CR>
@@ -30,16 +27,28 @@ nmap <Leader>d :ALEGoToDefinition<CR>
 nmap <Leader>D :ALEGoToTypeDefinition<CR>
 nmap <Leader>n :ALENextWrap<CR>
 " Default map to execute current script
-nmap <F5> :Start ./%<CR>
+nmap <F5> :Start %<CR>
 " Execute in bg
-nmap <s-F5> :Start! ./%<CR>
+nmap <s-F5> :Start! %<CR>
 " Dispatch/Make 
 nmap <Leader><F5> :Dispatch<CR>
 nmap <Leader><c-F5> :Dispatch %
+
 call plug#begin('~/.vim/plugged')
 
 " Theme plugin
 Plug 'morhetz/gruvbox'
+
+" Greeter (start-page)
+Plug 'mhinz/vim-startify'
+let g:startify_custom_header = [
+			\ ' 	     __                _            ',   
+			\ ' 	  /\ \ \___  ___/\   /(_)_ __ ___   ', 
+			\ ' 	 /  \/ / _ \/ _ \ \ / / | ´_ ` _ \  ', 
+			\ ' 	/ /\  /  __/ (_) \ V /| | | | | | | ', 
+			\ ' 	\_\ \/ \___|\___/ \_/ |_|_| |_| |_| ', 
+			\ '     									'
+			\ ]
 
 " Vitamined search and navigation by match results
 Plug 'easymotion/vim-easymotion'
@@ -50,9 +59,6 @@ nmap <Leader>sw <Plug>(easymotion-w)
 Plug 'scrooloose/nerdtree'
 " Shows git file states in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif" Keyboard-Map NERDTree
 " Close NT after open a file
 let NERDTreeQuitOnOpen=0
 " Close NT if it is the last tab opened (avoid to :q once if NT is opened)
@@ -64,8 +70,6 @@ nmap <Leader>nt :NERDTreeVCS<CR>
 Plug 'christoomey/vim-tmux-navigator'
 
 " Automatically closes brackets, quotes and so on (too basic)
-" Plug 'jiangmiao/auto-pairs'
-" A powerfull optimized and features rich fork of jiangmiao's
 Plug 'lunarwatcher/auto-pairs' 
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
@@ -83,6 +87,9 @@ let g:ale_completion_autoimport = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '!'
+" Autocompletion non-lenguage based complementary to ALE one
+Plug 'ackyshake/VimCompletesMe'
+autocmd FileType vim let b:vcm_tab_complete = 'vim'
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
@@ -97,46 +104,45 @@ set noshowmode
 let g:lightline = {
 			\ 'colorscheme': 'wombat',
 			\ 'active': {
-			\   'left': [ [ 'mode', 'paste' ],
-			\             [ 'filename', 'gitbranch', 'modified', 'linter' ] ]
-			\ },
-			\ 'component_function': {
-			\   'gitbranch': 'gitbranch#name',
-			\   'filename': 'LightLineCustomFilePath',
-			\	'linter': 'LinterStatus'
-			\ },
-			\ 'mode_map': {
-			\ 	'n' : 'N',
-			\ 	'i' : 'I',
-			\ 	'R' : 'R',
-			\ 	'v' : 'V',
-			\ 	'V' : 'VL',
-			\ 	"\<C-v>": 'VB',
-			\ 	'c' : 'C',
-			\ 	's' : 'S',
-			\ 	'S' : 'SL',
-			\ 	"\<C-s>": 'SB',
-			\ 	't': 'T',
-			\ },
-			\ }
+				\   'left': [ [ 'mode', 'paste' ],
+				\             [ 'filename', 'gitbranch', 'modified', 'linter' ] ]
+				\ },
+				\ 'component_function': {
+					\   'gitbranch': 'gitbranch#name',
+					\   'filename': 'LightLineCustomFilePath',
+					\	'linter': 'LinterStatus'
+					\ },
+					\ 'mode_map': {
+						\ 	'n' : 'N',
+						\ 	'i' : 'I',
+						\ 	'R' : 'R',
+						\ 	'v' : 'V',
+						\ 	'V' : 'VL',
+						\ 	"\<C-v>": 'VB',
+						\ 	'c' : 'C',
+						\ 	's' : 'S',
+						\ 	'S' : 'SL',
+						\ 	"\<C-s>": 'SB',
+						\ 	't': 'T',
+						\ },
+						\ }
 " Custom function to show current file with parent dir in lightline 
 function! LightLineCustomFilePath()
 	return expand('%') !=# '' ? expand('%:p:h:t').'/'.expand('%') : '[New file]'
 endfunction
 " Function to show ALE Linter errors
 function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+	let l:counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+	let l:all_errors = l:counts.error + l:counts.style_error
+	let l:all_non_errors = l:counts.total - l:all_errors
 
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%d! %dX',
-    \   all_non_errors,
-    \   all_errors
-    \)
+	return l:counts.total == 0 ? 'OK' : printf(
+				\   '%d! %dX',
+				\   all_non_errors,
+				\   all_errors
+				\)
 endfunction
-
 " Child plugin to show CVS Git status
 Plug 'itchyny/vim-gitbranch'
 
