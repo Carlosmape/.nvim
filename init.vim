@@ -80,7 +80,13 @@ if has("win32")
 	let g:ale_python_pylint_executable = lint_path . 'pylint.bat'
 	let g:ale_cpp_cpplint_executable = lint_path . 'cpplint.bat'
 endif
-"let g:ale_enabled 1
+" ALE Fixers (general and specific for each language)
+let g:ale_fixers = 
+			\ {'*': ['eslint'],  
+			\ 'javascript': ['eslint'], 
+			\ 'python': ['autoflake', 'autoimport', 'isort'] }
+let g:ale_history_enabled = 1
+" Another ALE configurations
 let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_autoimport = 1
