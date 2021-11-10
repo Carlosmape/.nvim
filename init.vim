@@ -76,7 +76,7 @@ Plug 'lunarwatcher/auto-pairs'
 Plug 'dense-analysis/ale'
 " Windows scripts to run python linters
 if has("win32")
-	let win_path = fnamemodify($MYVIMRC, ":h") . "/windowsLinters/"
+	let win_path = fnamemodify($MYVIMRC, ":h") . "\\LSPWindows\\"
 	"let g:ale_command_wrapper = 'python -m'
 	" PYTHON
 	let g:ale_python_pylint_executable = win_path . 'pylint.bat'
