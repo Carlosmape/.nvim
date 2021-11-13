@@ -59,12 +59,14 @@ nmap <Leader>sw <Plug>(easymotion-w)
 Plug 'scrooloose/nerdtree'
 " Shows git file states in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Close NT after open a file
+" Opens NT at the beggining
+autocmd VimEnter * NERDTreeCWD | wincmd p" Close NT after open a file
+" Do not close NT when open a file from it
 let NERDTreeQuitOnOpen=0
 " Close NT if it is the last tab opened (avoid to :q once if NT is opened)
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
-nmap <Leader>nt :NERDTreeVCS<CR>
+nmap <Leader>nt :NERDTreeToggleVCS<CR>
 
 " Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
@@ -138,10 +140,8 @@ endfunction
 " Function to show ALE Linter errors
 function! LinterStatus() abort
 	let l:counts = ale#statusline#Count(bufnr(''))
-
 	let l:all_errors = l:counts.error + l:counts.style_error
 	let l:all_non_errors = l:counts.total - l:all_errors
-
 	return l:counts.total == 0 ? 'OK' : printf(
 				\   '%d! %dX',
 				\   all_non_errors,
