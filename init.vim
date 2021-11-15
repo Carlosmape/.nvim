@@ -27,12 +27,9 @@ nmap <Leader>d :ALEGoToDefinition<CR>
 nmap <Leader>D :ALEGoToTypeDefinition<CR>
 nmap <Leader>n :ALENextWrap<CR>
 " Default map to execute current script
-nmap <F5> :Start %<CR>
-" Execute in bg
-nmap <s-F5> :Start! %<CR>
-" Dispatch/Make 
-nmap <Leader><F5> :Dispatch<CR>
-nmap <Leader><c-F5> :Dispatch %
+nmap <F5> :Start<CR>
+" Execute Dispatcher
+nmap <F15> :Dispatch<CR>
 
 call plug#begin('~/.vim/plugged')
 
@@ -66,7 +63,7 @@ let NERDTreeQuitOnOpen=0
 " Close NT if it is the last tab opened (avoid to :q once if NT is opened)
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
-nmap <Leader>nt :NERDTreeToggleVCS<CR>
+nmap <Leader>nt :NERDTreeFind<CR>
 
 " Allows to open splitted documents
 Plug 'christoomey/vim-tmux-navigator'
@@ -86,22 +83,19 @@ let g:ale_fixers =
 			\ {'*': ['eslint'],  
 			\ 'javascript': ['eslint'], 
 			\ 'python': ['autoflake', 'autoimport', 'isort'] }
-let g:ale_history_enabled = 1
 " Another ALE configurations
+let g:ale_history_enabled = 1
 let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_autoimport = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '!'
-" Autocompletion non-lenguage based complementary to ALE one
-Plug 'ackyshake/VimCompletesMe'
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
 
 " Integrated Compilation plugin
 Plug 'tpope/vim-dispatch'
 autocmd FileType java let b:dispatch = 'javac %'
-autocmd FileType python let b:dispatch ='pylint %'
+autocmd FileType python let b:dispatch ='python test.py' 
+autocmd FileType python let b:start = 'python %'
 
 " Status line
 Plug 'itchyny/lightline.vim'
