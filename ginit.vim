@@ -1,4 +1,6 @@
-" To reduce font size in Windows (nvim-qt)
 if has("win32")
-	execute join(["GuiFont! ", split(GuiFont, ":")[0], ":h10"], "")
+	" Default font but reduced font-size
+	:GuiFont! Consolas:h10
+	" Disable qt popupmenu, use vim built-in instead
+	GuiPopupmenu 0
 endif
