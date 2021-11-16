@@ -97,7 +97,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr> <TAB>
 		\ pumvisible() ? "\<C-n>" :
 		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
+		\ deoplete#manual_complete()
 inoremap <silent><expr> <ESC>
 		\ pumvisible() ? deoplete#undo_completion() :
 		\ "\<ESC>"
@@ -111,7 +111,7 @@ Plug 'tpope/vim-dispatch'
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType python let b:dispatch ='python test.py' 
 autocmd FileType python let b:start = 'python %'
-
+n
 " Status line
 Plug 'itchyny/lightline.vim'
 " Disables command mode in above cmd line
