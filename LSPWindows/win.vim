@@ -1,3 +1,4 @@
+let g:python3_host_prog = 'C:\Users\cgmartin\AppData\Local\Programs\Python\Python37\python.exe'
 "let g:ale_command_wrapper = 'python -m'
 let win_path = fnamemodify($MYVIMRC, ":h") . "\\LSPWindows\\"
 " PYTHON
