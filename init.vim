@@ -10,14 +10,15 @@ set showmatch
 set tabstop=4
 set shiftwidth=4
 " Able check spell by default
-:set spell 
+:set spell
 
 " Keyboard commands binding asdasd badword
 let mapleader=" "
 " Map to save
 nmap <Leader>w :w<CR>
+nmap <c-s> :w<CR>
 " Map to close current
-nmap <Leader>q :q<CR>	
+nmap <Leader>q :q<CR>
 " Map to check spell
 nmap <Leader>cs :set spell!<CR>
 " ALE mapping keys:
@@ -26,6 +27,8 @@ nmap <Leader>r :ALERename<CR>
 nmap <Leader>d :ALEGoToDefinition<CR>
 nmap <Leader>D :ALEGoToTypeDefinition<CR>
 nmap <Leader>n :ALENextWrap<CR>
+nmap <Leader>. :ALEHover<CR>
+nmap <F8> <Plug>(ale_fix)
 " Default map to execute current script
 nmap <F5> :Start<CR>
 " Execute Dispatcher
@@ -39,28 +42,28 @@ Plug 'morhetz/gruvbox'
 " Greeter (start-page)
 Plug 'mhinz/vim-startify'
 let g:startify_custom_header = [
-			\ ' 	     __                _            ',   
-			\ ' 	  /\ \ \___  ___/\   /(_)_ __ ___   ', 
-			\ ' 	 /  \/ / _ \/ _ \ \ / / | ´_ ` _ \  ', 
-			\ ' 	/ /\  /  __/ (_) \ V /| | | | | | | ', 
-			\ ' 	\_\ \/ \___|\___/ \_/ |_|_| |_| |_| ', 
+			\ ' 	     __                _            ',
+			\ ' 	  /\ \ \___  ___/\   /(_)_ __ ___   ',
+			\ ' 	 /  \/ / _ \/ _ \ \ / / | ´_ ` _ \  ',
+			\ ' 	/ /\  /  __/ (_) \ V /| | | | | | | ',
+			\ ' 	\_\ \/ \___|\___/ \_/ |_|_| |_| |_| ',
 			\ '     									'
 			\ ]
 
 " Vitamined search and navigation by match results
 Plug 'easymotion/vim-easymotion'
-nmap <Leader>s <Plug>(easymotion-sn)
-nmap <Leader>sw <Plug>(easymotion-w)
+nmap <c-f> <Plug>(easymotion-sn)
+nmap <>sw <Plug>(easymotion-w)
 
 " Allows tree folder navigation view
 Plug 'scrooloose/nerdtree'
 " Shows git file states in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Opens NT at the beggining
-autocmd VimEnter * NERDTreeCWD | wincmd p" Close NT after open a file
+autocmd VimEnter * NERDTreeVCS: | wincmd p" Close NT after open a file
 " Do not close NT when open a file from it
 let NERDTreeQuitOnOpen=0
-" Close NT if it is the last tab opened (avoid to :q once if NT is opened)
+" Close NT if it is te last tab opened (avoid to :q once if NT is opened)
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTree shortcut
 nmap <Leader>nt :NERDTreeFind<CR>
@@ -69,7 +72,7 @@ nmap <Leader>nt :NERDTreeFind<CR>
 Plug 'christoomey/vim-tmux-navigator'
 
 " Automatically closes brackets, quotes and so on (too basic)
-Plug 'lunarwatcher/auto-pairs' 
+Plug 'lunarwatcher/auto-pairs'
 
 " This plugin adds the ability to automatically lint code while you edit in Vim
 Plug 'dense-analysis/ale'
@@ -79,15 +82,14 @@ if has("win32")
 	execute 'source '. win_path
 endif
 " ALE Fixers (general and specific for each language)
-let g:ale_fixers = 
-			\ {'*': ['eslint'],  
-			\ 'javascript': ['eslint'], 
+let g:ale_fixers =
+			\ {'*': ['remove_trailing_lines', 'trim_whitespace'],
+			\ 'javascript': ['eslint'],
 			\ 'python': ['autoflake', 'autoimport', 'isort'] }
 " Another ALE configurations
 let g:ale_history_enabled = 1
 let g:ale_completion_enabled = 0
 let g:ale_completion_autoimport = 1
-let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '!'
 
@@ -99,7 +101,7 @@ inoremap <silent><expr> <TAB>
 		\ <SID>check_back_space() ? "\<TAB>" :
 		\ deoplete#manual_complete()
 inoremap <silent><expr> <ESC>
-		\ pumvisible() ? deoplete#undo_completion() :
+		\ pumvisible() ? deoplete#cancel_popup() :
 		\ "\<ESC>"
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -109,7 +111,7 @@ endfunction
 " Integrated Compilation/Launch plugin
 Plug 'tpope/vim-dispatch'
 autocmd FileType java let b:dispatch = 'javac %'
-autocmd FileType python let b:dispatch ='python test.py' 
+autocmd FileType python let b:dispatch ='python test.py'
 autocmd FileType python let b:start = 'python %'
 
 " Status line
@@ -142,7 +144,7 @@ let g:lightline = {
 						\ 	't': 'T',
 						\ },
 						\ }
-" Custom function to show current file with parent dir in lightline 
+" Custom function to show current file with parent dir in lightline
 function! LightLineCustomFilePath()
 	return expand('%') !=# '' ? expand('%:p:h:t').'/'.expand('%') : '[New file]'
 endfunction
