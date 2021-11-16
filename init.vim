@@ -85,13 +85,28 @@ let g:ale_fixers =
 			\ 'python': ['autoflake', 'autoimport', 'isort'] }
 " Another ALE configurations
 let g:ale_history_enabled = 1
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_completion_autoimport = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '!'
 
-" Integrated Compilation plugin
+" Autocompletion plugin richer then ALE integrated one
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+inoremap <silent><expr> <ESC>
+		\ pumvisible() ? deoplete#undo_completion() :
+		\ "\<ESC>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" Integrated Compilation/Launch plugin
 Plug 'tpope/vim-dispatch'
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType python let b:dispatch ='python test.py' 
