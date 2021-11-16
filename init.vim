@@ -111,7 +111,7 @@ Plug 'tpope/vim-dispatch'
 autocmd FileType java let b:dispatch = 'javac %'
 autocmd FileType python let b:dispatch ='python test.py' 
 autocmd FileType python let b:start = 'python %'
-n
+
 " Status line
 Plug 'itchyny/lightline.vim'
 " Disables command mode in above cmd line
