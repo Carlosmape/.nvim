@@ -38,8 +38,12 @@ require('packer').startup(function()
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
 end)
 
+--Enable system Clipboard
+vim.o.clipboard = "unnamedplus"
+
+
 --Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 --Make line numbers default
 vim.wo.number = true
