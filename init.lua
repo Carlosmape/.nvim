@@ -41,12 +41,12 @@ end)
 --Enable system Clipboard
 vim.o.clipboard = "unnamedplus"
 
-
 --Set highlight on search
 vim.o.hlsearch = true
 
 --Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 --Enable mouse mode
 vim.o.mouse = 'a'
@@ -63,7 +63,7 @@ vim.o.smartcase = true
 
 --Change tab size
 vim.o.tabstop=4
-vim.oshiftwidth=4
+vim.o.shiftwidth=4
 
 --Decrease update time
 vim.o.updatetime = 250
