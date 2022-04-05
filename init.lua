@@ -217,7 +217,7 @@ local on_attach = function(_, bufnr)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 	-- Auto hover
 	vim.cmd [[ autocmd CursorHold * lua vim.lsp.buf.hover() ]]
-	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.hover() ]]
+	vim.cmd [[ autocmd CursorHoldI * lua vim.diagnostic.open_float() ]]
 end
 
 -- nvim-cmp supports additional completion capabilities
