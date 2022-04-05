@@ -215,6 +215,9 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	-- Auto hover
+	vim.cmd [[ autocmd CursorHold * lua vim.lsp.buf.hover() ]]
+	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.hover() ]]
 end
 
 -- nvim-cmp supports additional completion capabilities
