@@ -216,12 +216,18 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 	-- Auto hover
+	vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+		vim.lsp.handlers.hover,
+		{ focus = false }
+	)
 	vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 		vim.lsp.handlers.signature_help,
 		{ focus = false }
 	)
-	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.signature_help(nil, {focus = false}) ]]
+	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.signature_help() ]]
+	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.hover() ]]
 	vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus = false}) ]]
+	vim.cmd [[ autocmd CursorHold * lua vim.lsp.buf.hover() ]]
 end
 
 -- nvim-cmp supports additional completion capabilities
