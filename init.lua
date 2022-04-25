@@ -32,6 +32,7 @@ require('packer').startup(function()
 	-- Additional textobjects for treesitter
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+	use 'mfussenegger/nvim-lint' -- Complementary linter (coding standard, and better practices hints)
 	use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'saadparwaiz1/cmp_luasnip'
@@ -229,6 +230,12 @@ local on_attach = function(_, bufnr)
 	vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus = false}) ]]
 	vim.cmd [[ autocmd CursorHold * lua vim.lsp.buf.hover() ]]
 end
+
+-- LINTER configuration
+require('lint').linters_by_ft = {
+  python = {'pylint',}
+}
+vim.cmd [[ autocmd InsertLeave <buffer> lua require('lint').try_lint() ]]
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
