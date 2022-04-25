@@ -225,17 +225,11 @@ local on_attach = function(_, bufnr)
 		vim.lsp.handlers.signature_help,
 		{ focus = false }
 	)
-	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.signature_help() ]]
-	vim.cmd [[ autocmd CursorHoldI * lua vim.lsp.buf.hover() ]]
-	vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus = false}) ]]
-	vim.cmd [[ autocmd CursorHold * lua vim.lsp.buf.hover() ]]
+	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help() ]]
+	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.hover() ]]
+	vim.cmd [[ autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focus = false}) ]]
+	vim.cmd [[ autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]]
 end
-
--- LINTER configuration
-require('lint').linters_by_ft = {
-  python = {'pylint',}
-}
-vim.cmd [[ autocmd InsertLeave <buffer> lua require('lint').try_lint() ]]
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -249,6 +243,14 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	}
 end
+
+-- LINTER configuration
+require('lint').linters_by_ft = {
+  python = {'pycodestyle', 'vulture'},
+  javascript = {'eslint'},
+  typescript = {'eslint'}
+}
+vim.cmd [[ autocmd BufEnter,InsertLeave <buffer> lua require('lint').try_lint() ]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
