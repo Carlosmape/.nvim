@@ -21,7 +21,7 @@ require('packer').startup(function()
 	use 'lunarwatcher/auto-pairs' -- Automatic tags management
 	-- UI to select things (files, grep results, open buffers...)
 	use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-	use 'morhetz/gruvbox' -- Dark Theme
+	use 'ellisonleao/gruvbox.nvim' -- Dark Theme
 	use 'itchyny/lightline.vim' -- Fancier statusline
 	-- Add indentation guides even on blank lines
 	use 'lukas-reineke/indent-blankline.nvim'

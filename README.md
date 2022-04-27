@@ -83,7 +83,7 @@ Mapped commands:
  - Plenary (Dependency for another plugins. Supports nvim + lua for async tasks [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim))
  - Vim-Fugitive (Git commands in nvim [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive))
  - Vim-Commentary (block, single line... commentaries from keymaps [tpope/vim-commentary](https://github.com/tpope/vim-commentary))
- - GruvBox (Colorscheme and themming plugin [morhetz/gruvbox](https://github.com/morhetz/gruvbox))
+ - GruvBox (Lua port of this well known colorscheme plugin [ellisonleao/gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim))
  - LightLine (Statusline plugin [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim))
  - <Under construction... there are more plugins but not all of them are in this section>    
        
