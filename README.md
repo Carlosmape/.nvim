@@ -1,64 +1,36 @@
 # My custom NeoVim configuration   
-It also should work for Vim    
+This configuration uses native NeoVim LUA compatibility. It is based in [shiftwinting configuration](https://github.com/shiftwinting/defaults.nvim)  
+I highly recomend to install latest Neovim (due to some plugin compatibility, and becouse recent versions are performance optimized)   
     
 ### What it does?
-Configuration file has my own nvim customization. It contains some rules, a plugin manager and also some plugins ready to be installed.
-   
-##### Some added plugins
- - Vim-Plug (Plugin manager [See more](https://github.com/junegunn/vim-plug))  
- - NerdTree (Allows to see directory tree [See more](https://github.com/scrooloose/nerdtree-git-plugin))   
- - EasyMotion (Search and navigate using keyboard [See more](https://github.com/easymotion/vim-easymotion))
- - VimCompletesMe (Autocompletion plugin [See more](https://github.com/ackyshake/VimCompletesMe))
- - _Vim-GutenTags (Disabled)_ (Autogenerates tags files[See more](https://github.com/ludovicchabant/vim-gutentags))    
- - GruvBox (Colorscheme and themming plugin [See more](https://github.com/morhetz/gruvbox))
- - TMuxNavigator (Splitted window navigation plugin (just using common movement keys + <CTRL>) [See more](https://github.com/christoomey/vim-tmux-navigator))
- - LightLine (Statusline plugin [See more](https://github.com/itchyny/lightline.vim))
-   - GitBranch (Git current branch for LightLine [See more](https://github.com/itchyny/vim-gitbranch))
- - ALE (Under testing. Not totally working. Highligthing PHP scripts in Linux... [See more](https://github.com/dense-analysis/ale))
- - CtrlP (Fuzzy File, Buffer and Tag Finder <CTRL>+p [See more](https://github.com/ctrlpvim/ctrlp.vim))
- - <Under construction... It will be more!>    
+Configuration file has my own nvim customization. It contains some rules, a plugin manager and also some plugins ready to be installed.  
+Main features are:   
+ - Plugin manager  
+ - Native LSP support (async code checkers/compilers)   
+ - Native Linting support (async code-style checkers)  
+ - Compatibility with Git commands (and signs for each buffer lines)  
+ - Rich code highlighting   
+ - And more...   
 
 ### How it looks?
+_TODO: update this image, should be great to have a GIF_   
 ![image](https://user-images.githubusercontent.com/5487555/139299081-a65cdc0b-261c-4412-a04a-cec806bc45e9.png)
     
-### How do I install(?) or whatever
- 1. This file should be placed on ~/.config/[nvim|vim]/init.vim   
- 2. Install vim-plug plugin manager. [Know how](https://github.com/junegunn/vim-plug)   
- 3. Once there, you should open nvim and install plugins as says vim-plug repo:   
-    On command mode type `:PlugInstall`
- 4. ALE needs some code linters (see next section to know more about this)
+### How do I install(?) or whatever   
+ 1. This file should be placed on ~/.config/nvim/init.lua (simply move to nvim config folder and clone this repository)   
+ 2. init.lua has in the top of the file an auto Packer installation process. So, to install it just open nvim once.
+ 3. Once there, you should open nvim (agian, to let it to load Packer) and install plugins as says Packer repo:   
+    On command mode type `:PackerInstall`   
  5. Enjoy :)!    
     
- #### Configure ALE to make a powerfull IDE
-  1. ALE uses Linters (are Python code processors to inspect opened files looking for coding-standard, code errors and so on)
-  2. Install Python 3 in your system
-  3. Install each language linter python package throw pip (`pip install pylint`)
-  4. Check :ALEInfo command inside Vim to see what happens (linters and another executables checkins are at the end of the output)
-  5. In windows, there are some .bat allowing to use that linters (see `windowsLinters` folder). That .bat files just invokes linters throw python, not directly as commands
-
-     
 ### How do I use?   
+This section is something like a quick-guide to has in mind (specially for those as I, not allways remembers some commands)    
 Leader key is space bar (` `) This key is used to run custom mapping in Normal mode      
-     
-Mapped commands:     
-| Custom command      | Does             |
-|---------------------|------------------|
-| `<Leader>` + `w` | Save file        |
-| `<Leader>` + `q` | Quit current file|
-| `<Leader>` + `nt`| Open NerdTree    |  
-| `<Leader>` + `s` | Open EasyMotion  |
-| `<Leader>` + `sw`| Open EasyMotion navigate in following words |
-| `<Leader>` + `cs`| Toggles spell check [See more](https://neovim.io/doc/user/spell.html) |
-| `<Leader>` + `sr`| Enters in 'search and replace' for the last searched word (`:%s//`+...) Must add text to replace and controller (...+`/gc` for global with confirmation) |
-| `<Leader>` + `t` | Open a terminal splitted |
-| `<Alt>` + `e`    | Will wrap autopairs (converts `()text` into `(text)` may be used with any enclosing bytes (`()`,`""`,`{}`,...)) |  
-| `<Ctrl>` + `p`   | Search files in PWD by name |
-| `<F5>`		   | Saves and execute current source file (`:w !%`). Should work for scripts (bash scripting, python, perl and so on...) |
-| `<Tab>`          | At the end of current writting word, autocompletes hint |
-
+    
+#### Inherit VIM commands   
 Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)(Motion commands should be used in Normal mode or pushing `<Alt>`+`<motion cmd>` in another mode)
 Almost all motion commands allows you to insert a number before the command. For example write `5w` will move 5 words fordward:
-| Moving Command  | Does                                   |
+| Command                      | Moves...                               |
 |------------------------------|----------------------------------------|
 | `w`                          | To next word begin                     |
 | `b`                          | To prev. word begin                    |
@@ -67,7 +39,7 @@ Almost all motion commands allows you to insert a number before the command. For
 | `^`                          | To current line starting (non-blank) char |
 | `$`                          | To current line end                    |
 | `%`                          | In a bracket, parenthesis or similar, goes to its pair |
-| `g` + `[moving cmd \| g]` | To `moving cmd` or file first line (samples: `g0` goes to char '0' in the current line) `g_` goes to last non-blank charachter of the line `gm` goes to the middle of the screen |
+| `g` + `[moving cmd \| g]`    | To `moving cmd` or file first line (samples: `g0` goes to char '0' in the current line) `g_` goes to last non-blank charachter of the line `gm` goes to the middle of the screen |
        
 | Control commands              | Does                                                     |  
 |-------------------------------|----------------------------------------------------------|  
@@ -84,5 +56,34 @@ Almost all motion commands allows you to insert a number before the command. For
 | `x`                        	| In visual mode, cuts selected piece of code. **Note** Uppercase will do it in backwards |  
 | `p`                        	| Pastes clipboard content after current cursor position (if in visual mode and something is selected, then replace current selected content). **Note** Uppercase will act backwards |  
 | `*\|#`                     	| Searches (like `/` cmd) current cursor word in entire file `n\|N` or `*\|#` |   
-| `q` + `{letter}` 				| To record a macro. All commands done after record starts can be executed using `@` + {letter}. **Note** Indicates number of repetitions before executing a macro will do the macro many times |
-| `m` + `{letter}` 				| Creates a Bookmark in the current line. Use `'{letter}` to move to a bookmark. **Note** Uppercase to define global bookmarks (Allows to move between files) |
+| `q` + `{letter}` 				| To record a macro. All commands done after record starts can be executed using `@` + {letter}. **Note** Indicates number of repetitions before executing a macro will do the macro many times |  
+| `m` + `{letter}` 				| Creates a Bookmark in the current line. Use `'{letter}` to move to a bookmark. **Note** Uppercase to define global bookmarks (Allows to move between files) |     
+   
+#### Specific for used plugins    
+_TODO: complete obsolete section. It describes old vimscript aproach (not current keymaps)_   
+Mapped commands:     
+| Custom command      | Does             |
+|---------------------|------------------|
+| `<Leader>` + `w` | Save file        |
+| `<Leader>` + `q` | Quit current file|
+| `<Leader>` + `nt`| Open NerdTree    |  
+| `<Leader>` + `s` | Open EasyMotion  |
+| `<Leader>` + `sw`| Open EasyMotion navigate in following words |
+| `<Leader>` + `cs`| Toggles spell check [See more](https://neovim.io/doc/user/spell.html) |
+| `<Leader>` + `sr`| Enters in 'search and replace' for the last searched word (`:%s//`+...) Must add text to replace and controller (...+`/gc` for global with confirmation) |
+| `<Leader>` + `t` | Open a terminal splitted |
+| `<Alt>` + `e`    | Will wrap autopairs (converts `()text` into `(text)` may be used with any enclosing bytes (`()`,`""`,`{}`,...)) |  
+| `<Ctrl>` + `p`   | Search files in PWD by name |
+| `<F5>`		   | Saves and execute current source file (`:w !%`). Should work for scripts (bash scripting, python, perl and so on...) |
+| `<Tab>`          | At the end of current writting word, autocompletes hint |
+      
+### Credits: used plugins
+ - Packer (Plugin manager [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim))  
+ - LSPconfig (Native support for LSP [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig))
+ - Plenary (Dependency for another plugins. Supports nvim + lua for async tasks [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim))
+ - Vim-Fugitive (Git commands in nvim [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive))
+ - Vim-Commentary (block, single line... commentaries from keymaps [tpope/vim-commentary](https://github.com/tpope/vim-commentary))
+ - GruvBox (Colorscheme and themming plugin [morhetz/gruvbox](https://github.com/morhetz/gruvbox))
+ - LightLine (Statusline plugin [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim))
+ - <Under construction... there are more plugins but not all of them are in this section>    
+       
