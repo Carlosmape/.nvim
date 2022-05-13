@@ -79,7 +79,7 @@ vim.cmd [[colorscheme gruvbox]]
 vim.g.lightline = {
 	colorscheme = 'gruvbox',
 	active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-	component_function = { gitbranch = 'fugitive#head' },
+	component_function = { gitbranch = 'FugitiveHead' },
 	mode_map = { n = 'N', i = 'I', R = 'R', v = 'V', V = 'VL', c = 'C', s = 'S', S = 'SL', t = 'T' },
 }
 
