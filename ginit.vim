@@ -3,4 +3,6 @@ if has("win32")
 	:GuiFont! Consolas:h10
 	" Disable qt popupmenu, use vim built-in instead
 	GuiPopupmenu 0
+	" Cd to repos directory inside user's home
+	:cd $USERPROFILE\source\repos
 endif
