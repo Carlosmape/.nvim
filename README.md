@@ -26,7 +26,7 @@ _TODO: update this image, should be great to have a GIF_
 ### How do I use?   
 This section is something like a quick-guide to has in mind (specially for those as I, not allways remembers some commands)    
 Leader key is space bar (` `) This key is used to run custom mapping in Normal mode      
-    
+ 				a   
 #### Inherit VIM commands   
 Vim inherit commands [See more](https://neovim.io/doc/user/motion.html)(Motion commands should be used in Normal mode or pushing `<Alt>`+`<motion cmd>` in another mode)
 Almost all motion commands allows you to insert a number before the command. For example write `5w` will move 5 words fordward:
@@ -36,10 +36,11 @@ Almost all motion commands allows you to insert a number before the command. For
 | `b`                          | To prev. word begin                    |
 | `e`                          | To (current/next) word end             |  
 | `G`                          | To last file line                      |
-| `^`                          | To current line starting (non-blank) char |
+| `^\|_`                          | To current line starting (non-blank) char |
 | `$`                          | To current line end                    |
 | `%`                          | In a bracket, parenthesis or similar, goes to its pair |
 | `g` + `[moving cmd \| g]`    | To `moving cmd` or file first line (samples: `g0` goes to char '0' in the current line) `g_` goes to last non-blank charachter of the line `gm` goes to the middle of the screen |
+| `<Ctrl>` + `w` + `[moving cmd \| w]` | Moves between opened splitted windows `w` in clycle |
        
 | Control commands              | Does                                                     |  
 |-------------------------------|----------------------------------------------------------|  
@@ -47,7 +48,7 @@ Almost all motion commands allows you to insert a number before the command. For
 | `i`                           | Enters in insert mode (at current cursor position). **Note** Uppercase will insert at the line beginning |  
 | `a`                           | Enters in insert mode (append, just after current cursor position). **Note** Uppercase will append at the end of the line |  
 | `o`                           | Opens a new line under cursor position and enters in insert mode. **Note** Uppercase will act backwards (new line will be inserted above) |
-| `r` 						    | Replaces cursor text (if in visual mode). **Note** Uppercase will enter in replace mode (like insert but replacing all) |
+| `r` + `[moving cmd]`			| Replaces cursor text (if in visual mode or using `moving cmd` will replace all characters with given one). **Note** Uppercase will enter in replace mode (like insert but replacing all) |
 | `c` + `[moving cmd \| c ]`    | Changes current cursor until `moving cmd` (or complete line). Does a `d` until `moving cmd` + `insert`. **Note** Uppercase to change from cursor til line end |
 | `v`                           | Enters in visual mode (to select a piece of code). **Note** Uppercase will enter in VisualBlock mode |  
 | `d` + `[moving cmd \| d ]`    | Deletes (cuts) from cursor to `moving cmd` (or complete line). In visual mode, deletes currently selected piece of code. **Note** Uppercase is the same to do `dd` or `d$` |   
@@ -60,22 +61,14 @@ Almost all motion commands allows you to insert a number before the command. For
 | `m` + `{letter}` 				| Creates a Bookmark in the current line. Use `'{letter}` to move to a bookmark. **Note** Uppercase to define global bookmarks (Allows to move between files) |     
    
 #### Specific for used plugins    
-_TODO: complete obsolete section. It describes old vimscript aproach (not current keymaps)_   
 Mapped commands:     
-| Custom command      | Does             |
-|---------------------|------------------|
-| `<Leader>` + `w` | Save file        |
-| `<Leader>` + `q` | Quit current file|
-| `<Leader>` + `nt`| Open NerdTree    |  
-| `<Leader>` + `s` | Open EasyMotion  |
-| `<Leader>` + `sw`| Open EasyMotion navigate in following words |
-| `<Leader>` + `cs`| Toggles spell check [See more](https://neovim.io/doc/user/spell.html) |
-| `<Leader>` + `sr`| Enters in 'search and replace' for the last searched word (`:%s//`+...) Must add text to replace and controller (...+`/gc` for global with confirmation) |
-| `<Leader>` + `t` | Open a terminal splitted |
-| `<Alt>` + `e`    | Will wrap autopairs (converts `()text` into `(text)` may be used with any enclosing bytes (`()`,`""`,`{}`,...)) |  
-| `<Ctrl>` + `p`   | Search files in PWD by name |
-| `<F5>`		   | Saves and execute current source file (`:w !%`). Should work for scripts (bash scripting, python, perl and so on...) |
-| `<Tab>`          | At the end of current writting word, autocompletes hint |
+| Custom command      	| Does             |
+|-----------------------|------------------|
+| `gd` 					| nvim-lsp go to definition |
+| `gr` 					| nvim-lsp find references of current symbol |
+| `[\|]`+ `d`			| nvim diagnostic go to prev\|next |
+| `<Ctrl>` + `o\|i` 	| Navigate throw last cursor position or recently opened buffers i.e: perform lsp go to definition and press `<Ctrl>o` will return to original buffer |
+| `gcc` 				| comments current line in normal mode or selected lines in visual mode |
       
 ### Credits: used plugins
  - Packer (Plugin manager [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim))  
