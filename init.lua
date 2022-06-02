@@ -37,7 +37,7 @@ require('packer').startup(function()
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
-	use 'pianocomposer321/project-templates.nvim' -- Project/templates manager
+	use 'Carlosmape/project-templates.nvim' -- Project/templates manager
 end)
 
 --Enable system Clipboard
@@ -226,10 +226,22 @@ local on_attach = function(_, bufnr)
 		vim.lsp.handlers.signature_help,
 		{ focus = false }
 	)
+	-- Hover auto commands
 	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help() ]]
 	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.hover() ]]
 	vim.cmd [[ autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focus = false}) ]]
-	vim.cmd [[ autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]]
+	vim.cmd [[ autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]] 
+	-- Automatic highlight current variable in whole buffer
+	vim.cmd([[
+      hi! link LspReferenceRead Visual
+      hi! link LspReferenceText Visual
+      hi! link LspReferenceWrite Visual
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]])
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -302,3 +314,28 @@ cmp.setup {
 		{ name = 'luasnip' },
 	},
 }
+
+-- NetRW (integrated file explorer)
+vim.cmd [[
+let g:netrw_banner=0
+"let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_winsize=25
+let g:netrw_keepdir=0
+let g:netrw_localcopydircmd='cp -r'
+let g:netrw_hide = 1
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+hi! link netrwMarkFile Search
+
+" Open NetRW at startup and focus the opened buffer
+aug ProjectDrawer
+	autocmd!
+	autocmd VimEnter *  :Lexplore | :wincmd w
+aug END
+
+" Ensure nvim closes if NetRW is the unique opened window
+aug netrw_close
+	au!
+	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
+aug END
+]]
