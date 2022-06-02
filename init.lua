@@ -22,6 +22,7 @@ require('packer').startup(function()
 	-- UI to select things (files, grep results, open buffers...)
 	use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 	use 'ellisonleao/gruvbox.nvim' -- Dark Theme
+	-- use 'morhetz/gruvbox' -- Dark Theme
 	use 'itchyny/lightline.vim' -- Fancier statusline
 	-- Add indentation guides even on blank lines
 	use 'lukas-reineke/indent-blankline.nvim'
@@ -32,6 +33,7 @@ require('packer').startup(function()
 	-- Additional textobjects for treesitter
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+	use 'ray-x/lsp_signature.nvim' -- Improved lsp signature (highlights arguments while writing) 
 	use 'mfussenegger/nvim-lint' -- Complementary linter (coding standard, and better practices hints)
 	use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -219,30 +221,37 @@ local on_attach = function(_, bufnr)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 	-- Auto hover
 	vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-		vim.lsp.handlers.hover,
-		{ focus = false }
+	vim.lsp.handlers.hover,
+	{ focus = false }
 	)
 	vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-		vim.lsp.handlers.signature_help,
-		{ focus = false }
+	vim.lsp.handlers.signature_help,
+	{ focus = false }
 	)
-	-- Hover auto commands
-	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help() ]]
-	vim.cmd [[ autocmd CursorHoldI <buffer> lua vim.lsp.buf.hover() ]]
-	vim.cmd [[ autocmd CursorHold <buffer> lua vim.diagnostic.open_float(nil, {focus = false}) ]]
+	-- Hover auto commands for signature help see specific plugin
 	vim.cmd [[ autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]] 
 	-- Automatic highlight current variable in whole buffer
 	vim.cmd([[
-      hi! link LspReferenceRead Visual
-      hi! link LspReferenceText Visual
-      hi! link LspReferenceWrite Visual
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]])
+	hi! link LspReferenceRead Visual
+	hi! link LspReferenceText Visual
+	hi! link LspReferenceWrite Visual
+	augroup lsp_document_highlight
+	autocmd! * <buffer>
+	autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+	autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	augroup END
+	]])
 end
+
+-- LpsSignature configurations (using plugin)
+require "lsp_signature".setup({
+	hint_enable = false, -- virtual hint enable 
+	handler_opts = {
+		border = "none"   -- double, rounded, single, shadow, none
+	},
+	floating_window_above_cur_line = false,
+	always_trigger = true,
+})
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -259,11 +268,11 @@ end
 
 -- LINTER configuration
 require('lint').linters_by_ft = {
-  python = {'pycodestyle', 'vulture'},
-  javascript = {'eslint'},
-  typescript = {'eslint'}
+	python = {'pycodestyle', 'vulture'},
+	javascript = {'eslint'},
+	typescript = {'eslint'}
 }
-vim.cmd [[ autocmd BufEnter,InsertLeave <buffer> lua require('lint').try_lint() ]]
+vim.cmd [[ autocmd BufEnter,BufWritePost <buffer> lua require('lint').try_lint() ]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -329,13 +338,13 @@ hi! link netrwMarkFile Search
 
 " Open NetRW at startup and focus the opened buffer
 aug ProjectDrawer
-	autocmd!
-	autocmd VimEnter *  :Lexplore | :wincmd w
+autocmd!
+autocmd VimEnter *  :Lexplore | :wincmd w
 aug END
 
 " Ensure nvim closes if NetRW is the unique opened window
 aug netrw_close
-	au!
-	au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
+au!
+au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
 aug END
 ]]
