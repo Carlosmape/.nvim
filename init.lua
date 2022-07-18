@@ -40,6 +40,7 @@ require('packer').startup(function()
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip' -- Snippets plugin
 	use 'Carlosmape/project-templates.nvim' -- Project/templates manager
+	use {"startup-nvim/startup.nvim", requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}} -- Startup configuration custom startup dashboards
 end)
 
 --Enable system Clipboard
@@ -82,7 +83,8 @@ vim.cmd [[colorscheme gruvbox]]
 vim.g.lightline = {
 	colorscheme = 'gruvbox',
 	active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-	component_function = { gitbranch = 'FugitiveHead' },
+	component_function = { gitbranch = 'FugitiveHead'},
+
 	mode_map = { n = 'N', i = 'I', R = 'R', v = 'V', V = 'VL', c = 'C', s = 'S', S = 'SL', t = 'T' },
 }
 
@@ -99,9 +101,22 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 vim.cmd [[
 augroup YankHighlight
 autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+autocmd TextYankPost * silent! lua vim.highlight.on_yank({timeout=-1})
 augroup end
 ]]
+
+-- smart_dd to do not copy empty lines during performing dd command
+local function smart_dd()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return "\"_dd"
+  else
+    return "dd"
+  end
+end
+vim.keymap.set( "n", "dd", smart_dd, { noremap = true, expr = true } )
+
+--Startup Dashboard
+require("startup").setup({theme = "dashboard"}) -- put theme name her
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
@@ -343,13 +358,3 @@ au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") ==
 aug END
 ]]
 
--- smart_dd to do not copy empty lines during performing dd command
-local function smart_dd()
-  if vim.api.nvim_get_current_line():match("^%s*$") then
-    return "\"_dd"
-  else
-    return "dd"
-  end
-end
-vim.keymap.set( "n", "dd", smart_dd, { noremap = true, expr = true } )
-vim.keymap.set( "v", "dd", smart_dd, { noremap = true, expr = true } )
