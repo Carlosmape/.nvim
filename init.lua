@@ -333,14 +333,8 @@ let g:netrw_winsize=25
 let g:netrw_keepdir=0
 let g:netrw_localcopydircmd='cp -r'
 let g:netrw_hide = 1
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+" let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 hi! link netrwMarkFile Search
-
-" Open NetRW at startup and focus the opened buffer
-aug ProjectDrawer
-autocmd!
-autocmd VimEnter *  :Lexplore | :wincmd w
-aug END
 
 " Ensure nvim closes if NetRW is the unique opened window
 aug netrw_close
@@ -348,3 +342,14 @@ au!
 au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
 aug END
 ]]
+
+-- smart_dd to do not copy empty lines during performing dd command
+local function smart_dd()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return "\"_dd"
+  else
+    return "dd"
+  end
+end
+vim.keymap.set( "n", "dd", smart_dd, { noremap = true, expr = true } )
+vim.keymap.set( "v", "dd", smart_dd, { noremap = true, expr = true } )
