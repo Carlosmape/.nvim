@@ -45,6 +45,9 @@ end)
 --Enable system Clipboard
 vim.o.clipboard = "unnamedplus"
 
+-- Disable show mode (will be in the statusline instead)
+vim.cmd [[set noshowmode]]
+
 --Set highlight on search
 vim.o.hlsearch = true
 
@@ -79,11 +82,19 @@ vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme gruvbox]]
 
 --Set statusbar
+vim.cmd [[
+function! LightlineFilename()
+  let filename = FugitivePath() !=# '' ? FugitivePath() : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
+]]
 vim.g.lightline = {
-	colorscheme = 'gruvbox',
-	active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-	component_function = { gitbranch = 'FugitiveHead'},
-
+	colorscheme = 'jellybeans',
+	component = { lineinfo = '%3l:%-2v%<', },
+	active = { left = { { 'mode', 'paste' }, {'readonly', 'lightline_filename', 'gitbranch'} } },
+	-- Custom features (defined here, used in the line above)
+	component_function = {gitbranch = 'FugitiveHead', lightline_filename = 'LightlineFilename'},
 	mode_map = { n = 'N', i = 'I', R = 'R', v = 'V', V = 'VL', c = 'C', s = 'S', S = 'SL', t = 'T' },
 }
 
