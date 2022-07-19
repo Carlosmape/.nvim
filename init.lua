@@ -16,13 +16,12 @@ local use = require('packer').use
 require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- Package manager
 	use 'tpope/vim-fugitive' -- Git commands in nvim
-	--use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
 	use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
 	use 'lunarwatcher/auto-pairs' -- Automatic tags management
 	-- UI to select things (files, grep results, open buffers...)
 	use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 	use 'ellisonleao/gruvbox.nvim' -- Dark Theme
-	-- use 'morhetz/gruvbox' -- Dark Theme
+	-- use 'morhetz/gruvbox' -- Dark Theme (original one)
 	use 'itchyny/lightline.vim' -- Fancier statusline
 	-- Add indentation guides even on blank lines
 	use 'lukas-reineke/indent-blankline.nvim'
@@ -115,14 +114,12 @@ local function smart_dd()
 end
 vim.keymap.set( "n", "dd", smart_dd, { noremap = true, expr = true } )
 
---Startup Dashboard
-require("startup").setup({theme = "dashboard"}) -- put theme name her
-
 --Map blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
+vim.g.indent_blankline_show_current_context = true
 
 -- Gitsigns
 require('gitsigns').setup {
@@ -358,3 +355,8 @@ au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") ==
 aug END
 ]]
 
+--Startup configuration, custom Dashboard
+--local dashboard_path = vim.fn.stdpath 'config' .. '/dashboard/?.lua;'
+--package.path =  package.path .. dashboard_path
+--require("startup").setup({require("custom")})
+require("startup").setup({theme = "dashboard"})
