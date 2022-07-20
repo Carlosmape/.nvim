@@ -40,6 +40,8 @@ packer.startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'ray-x/lsp_signature.nvim' 			-- Improved lsp signature (highlights arguments while writing) 
+	use 'mfussenegger/nvim-dap'				-- Debug Adapter Protocol for nvim (mentioned by neovim developers)
+	use 'mfussenegger/nvim-dap-python' 		-- Specific DAP adapter for python
 	use 'nvim-telescope/telescope.nvim'    	-- finder, requires fzf and ripgrep
 	use 'gruvbox-community/gruvbox'        	-- schmexy colors	
 	use 'ellisonleao/gruvbox.nvim' 			-- Dark Theme
