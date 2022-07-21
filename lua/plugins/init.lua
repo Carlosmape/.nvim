@@ -53,6 +53,9 @@ packer.startup(function(use)
 	use 'itchyny/lightline.vim' 			-- Fancier statusline
 	use 'Carlosmape/project-templates.nvim' -- Project/templates manager
 	use 'startup-nvim/startup.nvim' 		-- Startup configuration custom startup dashboards
+	use 'kyazdani42/nvim-web-devicons'      -- Icon font
+	use 'yamatsum/nvim-nonicons'			-- Icon configurations
+	use {'kyazdani42/nvim-tree.lua', tag='nightly'}		-- File explorer
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
