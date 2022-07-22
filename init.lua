@@ -14,5 +14,6 @@ require "plugins/configs/nvim-treesitter"
 require "plugins/configs/startup"
 require "plugins/configs/telescope"
 require "plugins/configs/nvim-tree"
+require "plugins/configs/nvim-autopairs"
 -- all settings
 require "settings/all"

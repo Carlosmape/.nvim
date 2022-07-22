@@ -48,7 +48,7 @@ packer.startup(function(use)
 	use 'tpope/vim-fugitive' 				-- Git commands in nvim
 	use 'tpope/vim-commentary' 				-- "gc" to comment visual regions/lines	
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-	use 'lunarwatcher/auto-pairs' 			-- Automatic tags management
+	use 'windwp/nvim-autopairs' 			-- Automatic tags management
 	use 'lewis6991/gitsigns.nvim'
 	use 'itchyny/lightline.vim' 			-- Fancier statusline
 	use 'Carlosmape/project-templates.nvim' -- Project/templates manager
