@@ -5,9 +5,6 @@ if not present then
 	return
 end
 
-autopairs.setup()
-require('nvim-autopairs').setup({
-})
 -- change default fast_wrap
 autopairs.setup({
   	ignored_next_char = "", -- will ignore alphanumeric and `.` symbol

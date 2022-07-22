@@ -6,7 +6,7 @@ end
 
 lsp_installer.setup({
 	-- automatically detect which servers to install (based on which servers are set up via lspconfig)
-	automatic_installation = true,
+	automatic_installation = false,
 	ui = {
 		icons = {
 			server_installed = "✓",

@@ -43,6 +43,7 @@ startup.setup({
 			{ " Recent Files", "Telescope oldfiles", "<leader>of" },
 			{ " File Browser", "Telescope file_browser", "<leader>fb" },
 			{ " Colorschemes", "Telescope colorscheme", "<leader>cs" },
+			{ " Install/Update dependencies", "PackerInstall", "<leader>i" },
 			{ " New File", "lua require'startup'.new_file()", "<leader>nf" },
 			{ " New From Template", "LoadTemplate", "<leader>nt" },
 		},
@@ -83,3 +84,8 @@ startup.setup({
 	},
 	parts = { "header", "body", "footer" },
 })
+
+UpdateAll = function()
+	print("I am a global function")
+end
+
