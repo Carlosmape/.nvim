@@ -45,18 +45,19 @@ cmp.setup {
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
-	}, { name = 'buffer' }
+		{ name = 'buffer' },
+	}, 
 }
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
 	sources = cmp.config.sources({
 		{ name = 'cmp_git' },
-	}, {
 		{ name = 'buffer' },
 	})
 })
 
+-- Set configuration for nvim command line
 cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
@@ -67,8 +68,7 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = 'path' }
-	}, {
-		{ name = 'cmdline' }
+		{ name = 'path' },
+		{ name = 'cmdline' },
 	})
 })
