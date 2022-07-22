@@ -50,7 +50,7 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 vim.cmd [[
 augroup YankHighlight
 autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank({timeout=-1})
+autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 augroup end
 ]]
 
