@@ -31,7 +31,6 @@ packer.startup(function(use)
 	use 'nvim-lua/popup.nvim'              	-- popup for other plugins
 	use 'nvim-treesitter/nvim-treesitter'  	-- language parsing completion engine
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
-	use 'williamboman/nvim-lsp-installer'  	-- UI for fetching/downloading LSPs
 	use 'neovim/nvim-lspconfig'            	-- language server protocol implementation
 	use 'hrsh7th/nvim-cmp'                 	-- THE vim completion engine
 	use 'L3MON4D3/LuaSnip'                 	-- more snippets
@@ -40,11 +39,11 @@ packer.startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'ray-x/lsp_signature.nvim' 			-- Improved lsp signature (highlights arguments while writing) 
-	use 'mfussenegger/nvim-dap'				-- Debug Adapter Protocol for nvim (mentioned by neovim developers)
-	use 'mfussenegger/nvim-dap-python' 		-- Specific DAP adapter for python
+	use 'mfussenegger/nvim-dap'				-- DAP - Debug Adapter Protocol for nvim (mentioned by neovim developers)
+	use 'williamboman/mason.nvim'			-- Mason: LSP, DAP, Treesitter packages installer/updater
+    use 'williamboman/mason-lspconfig.nvim' -- Mason-lspconfig integration
 	use 'nvim-telescope/telescope.nvim'    	-- finder, requires fzf and ripgrep
 	use 'gruvbox-community/gruvbox'        	-- schmexy colors	
-	use 'ellisonleao/gruvbox.nvim' 			-- Dark Theme
 	use 'tpope/vim-fugitive' 				-- Git commands in nvim
 	use 'tpope/vim-commentary' 				-- "gc" to comment visual regions/lines	
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
