@@ -26,7 +26,15 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-
+	-- Auto hover
+	vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+	vim.lsp.handlers.hover,
+	{ focus = false }
+	)
+	vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+	vim.lsp.handlers.signature_help,
+	{ focus = false }
+	)
 	-- Hover auto commands for signature help see specific plugin
 	vim.cmd [[ autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]] 
 
