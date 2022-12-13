@@ -136,7 +136,7 @@ startup.setup({
 			{ "📑 New From Template", "LoadTemplate", "<leader>nt" },
 			{ "🎨 Colorschemes", "Telescope colorscheme", "<leader>cs" },
 			{ "📦 Packer Install", "PackerInstall", "<leader>pi" },
-			{ "📥 Packer Update", "PackerUpdate", "<leader>pm" },
+			{ "📥 Packer Update", "PackerUpdate", "<leader>pu" },
 			{ "🔮 Mason Install/Update", "Mason", "<leader>m" },
 		},
 		highlight = "String",
