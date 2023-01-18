@@ -13,7 +13,7 @@ autopairs.setup({
       chars = { '{', '[', '(', '"', "'" },
       pattern = [=[[%'%"%)%>%]%)%}%,]]=],
       end_key = '$',
-      keys = 'qwertyuiopzxcvbnmasdfghjkl',
+      keys = 'qwertyuiopasdfghjklñzxcvbnm',
       check_comma = true,
       highlight = 'Search',
       highlight_grey='Comment'
