@@ -1,3 +1,5 @@
+-- NeoVim settings
+require "settings/all"
 -- Packer dependencies
 require "plugins"
 -- Plugin configurations
@@ -15,5 +17,5 @@ require "plugins/configs/lightline"
 require "plugins/configs/startup"
 require "plugins/configs/telescope"
 require "plugins/configs/nvim-tree"
--- NeoVim settings
-require "settings/all"
+require "plugins/configs/nvim-colorizer"
+

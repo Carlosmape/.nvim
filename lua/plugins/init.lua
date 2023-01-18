@@ -33,8 +33,8 @@ packer.startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig'            	-- language server protocol implementation
 	use 'hrsh7th/nvim-cmp'                 	-- THE vim completion engine
-	use 'L3MON4D3/LuaSnip'                 	-- more snippets
-	use 'saadparwaiz1/cmp_luasnip'         	-- even more snippets
+	use 'L3MON4D3/LuaSnip'                 	-- Snippets completion
+	use 'saadparwaiz1/cmp_luasnip'         	-- snippets for nvim-cmp (the vim completion engine)
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
@@ -44,6 +44,7 @@ packer.startup(function(use)
     use 'williamboman/mason-lspconfig.nvim' -- Mason-lspconfig integration
 	use 'nvim-telescope/telescope.nvim'    	-- finder, requires fzf and ripgrep
 	use 'gruvbox-community/gruvbox'        	-- schmexy colors	
+	use 'mhartington/oceanic-next'			-- color scheme oceanic
 	use 'tpope/vim-fugitive' 				-- Git commands in nvim
 	use 'tpope/vim-commentary' 				-- "gc" to comment visual regions/lines	
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -55,6 +56,8 @@ packer.startup(function(use)
 	use 'kyazdani42/nvim-web-devicons'      -- Icon font
 	use 'yamatsum/nvim-nonicons'			-- Icon configurations
 	use {'kyazdani42/nvim-tree.lua', tag='nightly'}		-- File explorer
+	use 'norcalli/nvim-colorizer.lua' 		-- highlight colors in code
+	
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
