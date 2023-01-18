@@ -10,4 +10,8 @@ lint.linters_by_ft = {
 	javascript = {'eslint'},
 	typescript = {'eslint'}
 }
-vim.cmd [[ autocmd BufEnter,BufWritePost <buffer> lua require('lint').try_lint() ]]
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    lint.try_lint()
+  end,
+})
