@@ -27,7 +27,7 @@ end
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'           	-- packer manages itself 
-	use 'nvim-lua/plenary.nvim'            	-- avoids callbacks, used by other plugins
+	use 'nvim-lua/plenary.nvim'            	-- avoids callbacks, used by other plugins for async tasks
 	use 'nvim-lua/popup.nvim'              	-- popup for other plugins
 	use 'nvim-treesitter/nvim-treesitter'  	-- language parsing completion engine
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -41,23 +41,21 @@ packer.startup(function(use)
 	use 'ray-x/lsp_signature.nvim' 			-- Improved lsp signature (highlights arguments while writing) 
 	use 'mfussenegger/nvim-dap'				-- DAP - Debug Adapter Protocol for nvim (mentioned by neovim developers)
 	use 'williamboman/mason.nvim'			-- Mason: LSP, DAP, Treesitter packages installer/updater
-    use 'williamboman/mason-lspconfig.nvim' -- Mason-lspconfig integration
+    use 'williamboman/mason-lspconfig.nvim' -- Mason-lspconfig integration (autoconfigures new installed LSP/DAP/linters/...)
 	use 'nvim-telescope/telescope.nvim'    	-- finder, requires fzf and ripgrep
 	use 'gruvbox-community/gruvbox'        	-- schmexy colors	
 	use 'mhartington/oceanic-next'			-- color scheme oceanic
-	use 'tpope/vim-fugitive' 				-- Git commands in nvim
+	use 'TimUntersberger/neogit'            -- Git integration (it is a clone of Magit: light and intuitive, use ? on the window to invoke help)
 	use 'tpope/vim-commentary' 				-- "gc" to comment visual regions/lines	
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
 	use 'windwp/nvim-autopairs' 			-- Automatic tags management
-	use 'lewis6991/gitsigns.nvim'
-	use 'itchyny/lightline.vim' 			-- Fancier statusline
 	use 'Carlosmape/project-templates.nvim' -- Project/templates manager
 	use 'startup-nvim/startup.nvim' 		-- Startup configuration custom startup dashboards
 	use 'kyazdani42/nvim-web-devicons'      -- Icon font
 	use 'yamatsum/nvim-nonicons'			-- Icon configurations
 	use 'nvim-lualine/lualine.nvim'			-- Lua line compatible with nvim-web-devicons
-	use {'kyazdani42/nvim-tree.lua', tag='nightly'}		-- File explorer
-	use 'norcalli/nvim-colorizer.lua' 		-- highlight colors in code
+	use {'kyazdani42/nvim-tree.lua', tag='nightly'}		-- File explorer (depends on nvim-web-devicons)
+	use 'norcalli/nvim-colorizer.lua' 		-- highlight colors in code (for HEX, RGB...)
 	
 
 	-- Automatically set up your configuration after cloning packer.nvim
