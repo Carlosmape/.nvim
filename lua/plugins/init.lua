@@ -32,12 +32,13 @@ packer.startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter'  	-- language parsing completion engine
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig'            	-- language server protocol implementation
-	use 'hrsh7th/nvim-cmp'                 	-- THE vim completion engine
+	use 'hrsh7th/nvim-cmp'                 	-- The vim completion engine
 	use 'L3MON4D3/LuaSnip'                 	-- Snippets completion
 	use 'saadparwaiz1/cmp_luasnip'         	-- snippets for nvim-cmp (the vim completion engine)
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'               
 	use 'ray-x/lsp_signature.nvim' 			-- Improved lsp signature (highlights arguments while writing) 
 	use 'mfussenegger/nvim-dap'				-- DAP - Debug Adapter Protocol for nvim (mentioned by neovim developers)
 	use 'williamboman/mason.nvim'			-- Mason: LSP, DAP, Treesitter packages installer/updater
