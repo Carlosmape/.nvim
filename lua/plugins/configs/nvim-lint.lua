@@ -6,7 +6,7 @@ end
 
 -- LINTER configuration
 lint.linters_by_ft = {
-	python = {'pycodestyle', 'vulture'},
+	python = {'flake8', 'vulture'},
 	javascript = {'eslint'},
 	typescript = {'eslint'}
 }

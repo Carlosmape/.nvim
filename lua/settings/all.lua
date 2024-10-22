@@ -35,7 +35,7 @@ vim.wo.signcolumn = 'yes'
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-
+vim.g.gruvbox_italic=1
 pcall(vim.cmd, "colorscheme gruvbox")
 
 --Remap space as leader key

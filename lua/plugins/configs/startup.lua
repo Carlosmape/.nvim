@@ -5,7 +5,7 @@ if not present then
 	return
 end
 -- Built in functions instance
-local functions = require("startup.functions")
+-- local functions = require("startup.functions")
 
 -- Array of headers (will be randomized)
 local headers = {
@@ -108,18 +108,18 @@ startup.setup({
 		default_color = "",
 		oldfiles_amount = 0,
 	},
-    header2 = {
-        type = "text",
-        oldfiles_directory = false,
-        align = "center",
-        fold_section = false,
-        title = "Quote",
-        margin = 5,
-        content = functions.quote(),
-        highlight = "Constant",
-        default_color = "",
-        oldfiles_amount = 0,
-    },	-- name which will be displayed and command
+    -- header2 = {
+    --     type = "text",
+    --     oldfiles_directory = false,
+    --     align = "center",
+    --     fold_section = false,
+    --     title = "Quote",
+    --     margin = 5,
+    --     content = functions.quote(),
+    --     highlight = "Constant",
+    --     default_color = "",
+    --     oldfiles_amount = 0,
+    -- },	-- name which will be displayed and command
 	body = {
 		type = "mapping",
 		oldfiles_directory = false,
@@ -143,35 +143,37 @@ startup.setup({
 		default_color = "",
 		oldfiles_amount = 0,
 	}, 
-	footer = {
-		type = "text",
-		oldfiles_directory = false,
-		align = "center",
-		fold_section = false,
-		title = "Footer",
-		margin = 5,
-		content = {functions.packer_plugins(), },
-		highlight = "Number",
-		default_color = "",
-		oldfiles_amount = 0,
-	}, 
-	options = {
-		mapping_keys = true,
-		cursor_column = 0.5,
-		empty_lines_between_mappings = true,
-		disable_statuslines = true,
-		paddings = { 1, 3, 3, 0 },
-	},
-	mappings = {
-		execute_command = "<CR>",
-		open_file = "o",
-		open_file_split = "<c-o>",
-		open_section = "<TAB>",
-		open_help = "?",
-	},
-	colors = {
-		background = "#1f2227",
-		folded_section = "#56b6c2",
-	},
-	parts = { "header", "header2", "body", "footer" },
+    footer = {
+        type = "text",
+        oldfiles_directory = false,
+        align = "center",
+        fold_section = false,
+        title = "Footer",
+        margin = 5,
+        content = { "startup.nvim" },
+        highlight = "Number",
+        default_color = "",
+        oldfiles_amount = 0,
+    },
+
+    options = {
+        mapping_keys = true,
+        cursor_column = 0.5,
+        empty_lines_between_mappings = true,
+        disable_statuslines = true,
+        paddings = { 1, 3, 3, 0 },
+    },
+    mappings = {
+        execute_command = "<CR>",
+        open_file = "o",
+        open_file_split = "<c-o>",
+        open_section = "<TAB>",
+        open_help = "?",
+    },
+    colors = {
+        background = "#1f2227",
+        folded_section = "#56b6c2",
+    },
+	-- parts = { "header", "header2", "body", "footer" },
+	parts = { "header", "body", "footer" },
 })

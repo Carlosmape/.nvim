@@ -55,7 +55,7 @@ packer.startup(function(use)
 	use 'kyazdani42/nvim-web-devicons'      -- Icon font
 	use 'yamatsum/nvim-nonicons'			-- Icon configurations
 	use 'nvim-lualine/lualine.nvim'			-- Lua line compatible with nvim-web-devicons
-	use {'kyazdani42/nvim-tree.lua', tag='nightly'}		-- File explorer (depends on nvim-web-devicons)
+	use 'kyazdani42/nvim-tree.lua'			-- File explorer (depends on nvim-web-devicons)
 	use 'norcalli/nvim-colorizer.lua' 		-- highlight colors in code (for HEX, RGB...)
 	
 
