@@ -62,7 +62,7 @@ end
 
 
 masonlspconfig.setup({
-    ensure_installed = { 'pyright', 'tsserver', 'bashls' }
+    ensure_installed = { }
 })
 
 masonlspconfig.setup_handlers({
