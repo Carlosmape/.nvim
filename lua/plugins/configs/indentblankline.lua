@@ -1,2 +1,6 @@
+local present, ibl = pcall(require, "lspconfig")
 
-require("ibl").setup()
+if not present then
+	return
+end
+ibl.setup()
